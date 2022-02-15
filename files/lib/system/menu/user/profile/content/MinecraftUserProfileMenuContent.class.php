@@ -28,7 +28,7 @@ class MinecraftUserProfileMenuContent extends SingletonFactory implements IUserP
             $minecrafts[$i]['uuid'] = $minecraftUser->minecraftUUID;
             // TODO add url and size change
             // TODO Ingameskin?
-            $minecrafts[$i]['img'] = 'https://minotar.net/armor/bust/'.\str_replace('-', '', strtolower($minecraftUser->minecraftUUID)."/100.png");
+            $minecrafts[$i]['img'] = 'https://minotar.net/armor/bust/' . \str_replace('-', '', strtolower($minecraftUser->minecraftUUID) . "/100.png");
             // TODO add stats
         }
 
