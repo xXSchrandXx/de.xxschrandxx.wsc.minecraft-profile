@@ -22,8 +22,7 @@ class MinecraftUserProfileMenuContent extends SingletonFactory implements IUserP
         $minecraftUsers = $minecraftUserList->getObjects();
 
         $client = HttpFactory::getDefaultClient();
-        foreach ($minecraftUsers as $i => $minecraftUser)
-        {
+        foreach ($minecraftUsers as $i => $minecraftUser) {
             // TODO switch to ingame name
             $minecrafts[$i]['title'] = $minecraftUser->title;
             $minecrafts[$i]['uuid'] = $minecraftUser->minecraftUUID;
@@ -41,21 +40,16 @@ class MinecraftUserProfileMenuContent extends SingletonFactory implements IUserP
 
     public function isVisible($userID)
     {
-        if (MINECRAFT_PROFILE_ENABLED && MINECRAFT_LINKER_ENABLED)
-        {
+        if (MINECRAFT_PROFILE_ENABLED && MINECRAFT_LINKER_ENABLED) {
             $user = new User($userID);
             if ($user == null) {
                 return false;
-            }
-            else if (WCF::getUser()->hasAdministrativeAccess()) {
+            } else if (WCF::getUser()->hasAdministrativeAccess()) {
                 return true;
-            }
-            else {
+            } else {
                 return $user->getUserOption('minecraft_profile_enabled');
             }
-        }
-        else
-        {
+        } else {
             return false;
         }
     }

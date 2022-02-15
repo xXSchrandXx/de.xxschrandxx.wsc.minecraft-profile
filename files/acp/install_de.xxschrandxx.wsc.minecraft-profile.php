@@ -7,7 +7,7 @@ use wcf\system\WCF;
 $tables = [
     PartialDatabaseTable::create('wcf1_user_minecraft')
         ->columns([
-            
+            // TODO Fetch images?
         ])
 ];
 
