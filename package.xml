@@ -5,7 +5,7 @@
         <packagename language="de"><![CDATA[Minecraft-Profile]]></packagename>
         <packagedescription><![CDATA[Adds a profile menu with Minecraft account-information.]]></packagedescription>
         <packagedescription language="de"><![CDATA[Fügt ein Profilmenü mit Minecraft Account-Informationen hinzu.]]></packagedescription>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>0.0.1 dev 1</version>
         <date>2021-11-08</date>
     </packageinformation>
 

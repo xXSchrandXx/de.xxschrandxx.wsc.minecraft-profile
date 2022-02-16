@@ -5,7 +5,7 @@ use wcf\system\database\table\PartialDatabaseTable;
 use wcf\system\WCF;
 
 $tables = [
-    PartialDatabaseTable::create('wcf1_user_minecraft')
+    PartialDatabaseTable::create('wcf' . WCF_N . '_user_minecraft')
         ->columns([
             // TODO Fetch images?
         ])
