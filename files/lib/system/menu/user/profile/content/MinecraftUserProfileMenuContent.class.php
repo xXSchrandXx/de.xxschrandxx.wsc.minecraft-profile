@@ -4,16 +4,17 @@ namespace wcf\system\menu\user\profile\content;
 
 use wcf\data\user\minecraft\MinecraftUserList;
 use wcf\data\user\User;
-use wcf\system\io\HttpFactory;
+use wcf\system\minecraft\MinecraftProfileHandler;
 use wcf\system\SingletonFactory;
 use wcf\system\WCF;
-use wcf\util\JSON;
-use wcf\util\Url;
 
 class MinecraftUserProfileMenuContent extends SingletonFactory implements IUserProfileMenuContent
 {
+
     public function getContent($userID)
     {
+        $mph = MinecraftProfileHandler::getInstance();
+
         $minecrafts = [];
 
         $minecraftUserList = new MinecraftUserList();
@@ -21,15 +22,18 @@ class MinecraftUserProfileMenuContent extends SingletonFactory implements IUserP
         $minecraftUserList->readObjects();
         $minecraftUsers = $minecraftUserList->getObjects();
 
-        $client = HttpFactory::getDefaultClient();
         foreach ($minecraftUsers as $i => $minecraftUser) {
-            // TODO switch to ingame name
             $minecrafts[$i]['title'] = $minecraftUser->title;
             $minecrafts[$i]['uuid'] = $minecraftUser->minecraftUUID;
-            // TODO add url and size change
-            // TODO Ingameskin?
-            $minecrafts[$i]['img'] = 'https://minotar.net/armor/bust/' . \str_replace('-', '', strtolower($minecraftUser->minecraftUUID) . "/100.png");
-            // TODO add stats
+            $minecrafts[$i]['name'] = $minecraftUser->minecraftName;
+            if (MINECRAFT_PROFILE_ONLINEMODE) {
+                $minecrafts[$i]['img'] = $mph->loadOnlineMinecraftSkin($minecraftUser);
+            } else {
+                $minecrafts[$i]['img'] = $mph->loadOfflineMinecraftSkin($minecraftUser);
+            }
+            if ($minecrafts[$i]['img'] === false) {
+                $minecrafts[$i]['img'] = 'images/skins/default.png';
+            }
         }
 
         return WCF::getTPL()->fetch('userProfileMinecraft', 'wcf', [

@@ -3,9 +3,9 @@
 		{content}
 			<dl>
 				{foreach from=$minecrafts item=minecraft}
-					<dt>{$minecraft['title']}</dt>
+					<dt>{$minecraft['name']}</dt>
 					<dd>
-						<span class="userProfileMinecraft" style="background-image: url('{$minecraft['img']}');" />
+						<img src="{$__wcf->getPath()}{$minecraft['img']}" alt="{$minecraft['name']}"/>
 					</dd>
 				{/foreach}
 			</dl>
