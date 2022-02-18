@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<language xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/2019/language.xsd" languagecode="de">
-    <category name="wcf.acp.option">
-        <item name="wcf.acp.option.category.minecraft_profile"><![CDATA[Minecraft-Profil]]></item>
-        <item name="wcf.acp.option.category.minecraft_profile_general"><![CDATA[Allgemeine Einstellungen]]></item>
-        <item name="wcf.acp.option.minecraft_profile_enabled"><![CDATA[Minecraft-Profil aktivieren]]></item>
-        <item name="wcf.acp.option.minecraft_profile_enabled.description"><![CDATA[Soll im Profil der Minecraft-Reiter angezeigt werden.]]></item>
-    </category>
-    <category name="wcf.user.profile">
-        <item name="wcf.user.profile.menu.MinecraftUUIDs"><![CDATA[Minecraft-Accounts]]></item>
-    </category>
+<language xmlns="http://www.woltlab.com"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/5.4/language.xsd" languagecode="de">
+	<category name="wcf.acp.option">
+		<item name="wcf.acp.option.category.minecraft_profile"><![CDATA[Minecraft-Profil]]></item>
+		<item name="wcf.acp.option.category.minecraft_profile_general"><![CDATA[Allgemeine Einstellungen]]></item>
+		<item name="wcf.acp.option.minecraft_profile_enabled"><![CDATA[Minecraft-Profil aktivieren]]></item>
+		<item name="wcf.acp.option.minecraft_profile_enabled.description"><![CDATA[Soll im Profil der Minecraft-Reiter angezeigt werden.]]></item>
+	</category>
+	<category name="wcf.user.profile">
+		<item name="wcf.user.profile.menu.MinecraftUUIDs"><![CDATA[Minecraft-Accounts]]></item>
+	</category>
 </language>

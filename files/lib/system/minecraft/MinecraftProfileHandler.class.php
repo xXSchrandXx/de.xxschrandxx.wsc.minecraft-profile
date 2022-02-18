@@ -36,7 +36,8 @@ class MinecraftProfileHandler extends SingletonFactory
         $this->minecraft = new Minecraft($this->minecraftID);
     }
 
-    public function getOfflineSkinURL($name) {
+    public function getOfflineSkinURL($name)
+    {
         $args = [
             'type' => 'skin',
             'content' => [
@@ -78,7 +79,8 @@ class MinecraftProfileHandler extends SingletonFactory
      * @param MinecraftUser $minecraftUser
      * @return string|false path to picture
      */
-    public function loadOfflineMinecraftSkin($minecraftUser) {
+    public function loadOfflineMinecraftSkin($minecraftUser)
+    {
         $skindata64 = $this->getOfflineSkinURL($minecraftUser->minecraftName);
         if (array_key_exists('error', $skindata64)) {
             return false;
@@ -96,7 +98,8 @@ class MinecraftProfileHandler extends SingletonFactory
      * @param MinecraftUser $minecraftUser
      * @return string path to picture
      */
-    public function loadOnlineMinecraftSkin($minecraftUser) {
+    public function loadOnlineMinecraftSkin($minecraftUser)
+    {
         $client = HttpFactory::getDefaultClient();
         $response1 = $client->request('GET', 'https://sessionserver.mojang.com/session/minecraft/profile/' . \str_replace('-', '', strtolower($minecraftUser->minecraftUUID)));
         $jsonResponse1 = JSON::decode($response1->getBody()->getContents());
@@ -113,7 +116,8 @@ class MinecraftProfileHandler extends SingletonFactory
      * @param string $uuid
      * @return string path to picture
      */
-    public function saveModifyMinecraftSkin($resource, $uuid) {
+    public function saveModifyMinecraftSkin($resource, $uuid)
+    {
         $renderer = new SkinRenderer(85, WCF_DIR . 'lib/system/api/outadoc/MCSkinPreviewAPI/char.png');
         $path = 'images/skins/' . $uuid . '.png';
         \imagepng($renderer->renderSkinFromResource(imagecreatefromstring($resource)), WCF_DIR . $path);

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/5.4/option.xsd">
+<data xmlns="http://www.woltlab.com"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/5.4/option.xsd">
 	<import>
 		<categories>
 			<category name="minecraft_profile">
@@ -16,12 +17,12 @@
 				<defaultvalue>1</defaultvalue>
 				<enableoptions>minecraft_profile_general,minecraft_profile_onlinemode</enableoptions>
 			</option>
-            <option name="minecraft_profile_identity">
-                <categoryname>minecraft_profile_general</categoryname>
-                <optiontype>MinecraftConnectionSelect</optiontype>
-            </option>
+			<option name="minecraft_profile_identity">
+				<categoryname>minecraft_profile_general</categoryname>
+				<optiontype>MinecraftConnectionSelect</optiontype>
+			</option>
 			<option name="minecraft_profile_onlinemode">
-                <categoryname>minecraft_profile_general</categoryname>
+				<categoryname>minecraft_profile_general</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>1</defaultvalue>
 			</option>
