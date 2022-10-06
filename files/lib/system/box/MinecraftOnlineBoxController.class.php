@@ -37,10 +37,19 @@ class MinecraftOnlineBoxController extends AbstractDatabaseObjectListBoxControll
     /**
      * @inheritDoc
      */
+    public function hasContent()
+    {
+        // Always has content.
+        return true;
+    }
+
+    /**
+     * @inheritDoc
+     */
     protected function getTemplate()
     {
-        return wcfDebug(WCF::getTPL()->fetch('boxMinecraftOnlineList', 'wcf', [
+        return WCF::getTPL()->fetch('boxMinecraftOnlineList', 'wcf', [
             'boxMinecraftProfileList' => $this->objectList->getObjects()
-        ], true));
+        ], true);
     }
 }
