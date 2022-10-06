@@ -11,7 +11,6 @@ use wcf\data\minecraft\MinecraftProfileEditor;
 use wcf\data\minecraft\MinecraftProfileList;
 use wcf\system\io\HttpFactory;
 use wcf\system\MCSkinPreviewAPI\SkinRendererHandler;
-use wcf\util\MinecraftLinkerUtil;
 
 /**
  * MinecraftProfile action class
@@ -53,16 +52,6 @@ class MinecraftProfileAction extends AbstractMinecraftLinkerAction
     public function readParameters(): ?JsonResponse
     {
         $result = parent::readParameters();
-
-        // check linked
-        $this->user = MinecraftLinkerUtil::getUser($this->uuid);
-        if (!isset($this->user)) {
-            if (ENABLE_DEBUG_MODE) {
-                return $this->send('Bad Request. \'uuid\' is not linked.', 400);
-            } else {
-                return $this->send('Bad request.', 400);
-            }
-        }
 
         // check online
         if (!array_key_exists('online', $this->getJSON())) {
@@ -113,7 +102,7 @@ class MinecraftProfileAction extends AbstractMinecraftLinkerAction
 
         // Set MinecraftProfile
         $minecraftProfileList = new MinecraftProfileList();
-        $minecraftProfileList->getConditionBuilder()->add('minecraftID = ?', [$this->minecraftID]);
+        $minecraftProfileList->getConditionBuilder()->add('minecraftID = ? AND minecraftUUID = ?', [$this->minecraftID, $this->uuid]);
         $minecraftProfileList->readObjects();
 
         try {

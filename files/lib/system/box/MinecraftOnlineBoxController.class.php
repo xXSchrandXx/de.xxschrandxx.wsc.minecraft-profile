@@ -3,6 +3,9 @@
 namespace wcf\system\box;
 
 use wcf\data\minecraft\MinecraftProfileList;
+use wcf\data\user\minecraft\MinecraftUserList;
+use wcf\data\user\minecraft\UserToMinecraftUserList;
+use wcf\data\user\User;
 use wcf\system\WCF;
 
 /**
@@ -48,8 +51,27 @@ class MinecraftOnlineBoxController extends AbstractDatabaseObjectListBoxControll
      */
     protected function getTemplate()
     {
+        $userToMinecraftUserList = new UserToMinecraftUserList();
+        $minecraftUUIDToUserIDs = [];
+        if ($userToMinecraftUserList->countObjects() > 0) {
+            $userToMinecraftUserList->readObjects();
+            $userToMinecraftUserIDs = $userToMinecraftUserList->getObjectIDs();
+            /** @var \wcf\data\user\minecraft\UserToMinecraftUser[] */
+            $userToMinecraftUsers = $userToMinecraftUserList->getObjects();
+            $minecraftUserList = new MinecraftUserList();
+            $minecraftUserList->getConditionBuilder()->add('minecraftUserID IN (?)', [$userToMinecraftUserIDs]);
+            if ($minecraftUserList->countObjects() > 0) {
+                $minecraftUserList->readObjects();
+                /** @var \wcf\data\user\minecraft\MinecraftUser[] */
+                $minecraftUsers = $minecraftUserList->getObjects();
+                foreach ($minecraftUsers as $minecraftUser) {
+                    $minecraftUUIDToUserIDs[$minecraftUser->getMinecraftUUID()] = new User($userToMinecraftUsers[$minecraftUser->getObjectID()]->getUserID());
+                }
+            }
+        }
         return WCF::getTPL()->fetch('boxMinecraftOnlineList', 'wcf', [
-            'boxMinecraftProfileList' => $this->objectList->getObjects()
+            'boxMinecraftProfiles' => $this->objectList->getObjects(),
+            'boxMinecraftUsers' => $minecraftUUIDToUserIDs
         ], true);
     }
 }
