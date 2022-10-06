@@ -5,7 +5,7 @@ namespace wcf\system\MCSkinPreviewAPI\adapter;
 use Imagick;
 use wcf\system\MCSkinPreviewAPI\adapter\ISkinRenderer;
 
-/* 
+/*
  * ImagickSkinRenderer.class.php - Library to render previews of Minecraft (tm) skins
  * Copyright outadoc (https://github.com/outadoc/MC-SkinPreviewAPI)
  * Modified xXSchrandXx
