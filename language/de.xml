@@ -9,4 +9,7 @@
 <p>Links für Plugin-Konfiguration:</p>
 <p><kbd>{link controller='MinecraftProfile' forceFrontend=true}{/link}</kbd></p>]]></item>
 	</category>
+	<category name="wcf.acp.box.boxController">
+		<item name="wcf.acp.box.boxController.de.xxschrandxx.wsc.minecraft-profile.MinecraftOnlineBox"><![CDATA[Online]]></item>
+	</category>
 </language>

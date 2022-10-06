@@ -7,5 +7,10 @@
             <definitionname>com.woltlab.wcf.boxController</definitionname>
             <classname>wcf\system\box\MinecraftOnlineBoxController</classname>
         </type>
+		<type>
+			<name>de.xxschrandxx.wsc.minecraft-profile.MinecraftID</name>
+			<definitionname>de.xxschrandxx.wsc.minecraft-profile.MinecraftOnlineBox.condition</definitionname>
+			<classname>wcf\system\condition\minecraft\MinecraftIDCondition</classname>
+		</type>
 	</import>
 </data>

@@ -11,8 +11,13 @@ use wcf\system\WCF;
  * @author   xXSchrandXx
  * @package  WoltLabSuite\Core\System\Box
  */
-class MinecraftOnlineBox extends AbstractDatabaseObjectListBoxController
+class MinecraftOnlineBoxController extends AbstractDatabaseObjectListBoxController
 {
+    /**
+     * @inheritDoc
+     */
+    protected $conditionDefinition = 'de.xxschrandxx.wsc.minecraft-profile.MinecraftOnlineBox.condition';
+
     /**
      * @inheritDoc
      */
