@@ -31,9 +31,7 @@ class MinecraftOnlineBoxController extends AbstractDatabaseObjectListBoxControll
      */
     protected function getObjectList()
     {
-        $minecraftProfileList = new MinecraftProfileList();
-        $minecraftProfileList->getConditionBuilder()->add('online = 1');
-        return $minecraftProfileList;
+        return new MinecraftProfileList();
     }
 
     /**
