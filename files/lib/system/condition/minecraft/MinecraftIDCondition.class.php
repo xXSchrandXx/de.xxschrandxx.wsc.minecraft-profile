@@ -1,4 +1,5 @@
 <?php
+
 namespace wcf\system\condition\minecraft;
 
 use wcf\data\DatabaseObject;
