@@ -1,6 +1,12 @@
 <ul class="sidebarItemList">
+	<li>
+	<div class="sidebarItemTitle">
+		<h3>Default</h3>
+			<img src="images/skins/default-FACE.png" />
+		</div>
+	</li>
 	{foreach from=$boxMinecraftProfileList item=boxMinecraftProfile}
-		<li class="box24">
+		<li>
 			<div class="sidebarItemTitle">
 				<h3>{$boxMinecraftProfile->getMinecraftName()}</h3>
 				{if $boxMinecraftProfile->hasGeneratedImage()}
