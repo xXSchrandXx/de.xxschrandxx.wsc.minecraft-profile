@@ -16,14 +16,13 @@ namespace wcf\system\MCSkinPreviewAPI\adapter;
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 class GDSkinRenderer implements ISkinRenderer
 {
-
     /** @var int the width of the rendered skin (corresponding height will be calculated automatically) */
     private $skin_width;
 
@@ -307,7 +306,7 @@ class GDSkinRenderer implements ISkinRenderer
         if ($fullsize === false) {
             return false;
         }
-        
+
         if (imagesavealpha($fullsize, true) === false) {
             return false;
         }
@@ -447,7 +446,6 @@ class GDSkinRenderer implements ISkinRenderer
         // Check for a 8*8 square of pixels starting at ($x;$y)
         for ($i = $x; $i < $x + $w; $i++) {
             for ($j = $y; $j < $y + $h; $j++) {
-
                 // If this pixel isn't the same color as the first one, then return false
                 if (
                     imagecolorat($img, $i, $j) != $transparent

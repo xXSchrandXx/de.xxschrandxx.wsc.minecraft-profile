@@ -86,7 +86,7 @@ interface ISkinRenderer
      * @param int $src_y y-coordinate of source point
      * @param int $src_w source width
      * @param int $src_h source height
-
+     *
      * @return bool false on error.
      */
     public function flipRectHorizontal(&$dest, $src, $dst_x, $dst_y, $src_x, $src_y, $src_w, $src_h);
@@ -95,7 +95,7 @@ interface ISkinRenderer
      * Flips all the pixels of a bitmap horizontally.
      *
      * @param \GdImage|\Imagick|resource $bmp the bitmap to flip
-     * 
+     *
      * @return bool false on error.
      */
     public function flipHorizontal(&$bmp);
@@ -111,7 +111,7 @@ interface ISkinRenderer
      * @param int $y y-coordinate of source point
      * @param int $w source width
      * @param int $h source height
-     * 
+     *
      * @return bool false on error.
      */
     public function overlayArmor(&$armor, &$dest, $dst_x, $dst_y, $x, $y, $w, $h);
