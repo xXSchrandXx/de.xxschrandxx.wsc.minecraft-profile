@@ -17,15 +17,6 @@
 				<defaultvalue>1</defaultvalue>
 				<enableoptions>minecraft_profile_general,minecraft_profile_onlinemode</enableoptions>
 			</option>
-			<option name="minecraft_profile_identity">
-				<categoryname>minecraft_profile_general</categoryname>
-				<optiontype>MinecraftConnectionSelect</optiontype>
-			</option>
-			<option name="minecraft_profile_onlinemode">
-				<categoryname>minecraft_profile_general</categoryname>
-				<optiontype>boolean</optiontype>
-				<defaultvalue>1</defaultvalue>
-			</option>
 		</options>
 	</import>
 </data>

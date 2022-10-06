@@ -5,9 +5,8 @@
 		<item name="wcf.acp.option.category.minecraft_profile"><![CDATA[Minecraft-Profil]]></item>
 		<item name="wcf.acp.option.category.minecraft_profile_general"><![CDATA[Allgemeine Einstellungen]]></item>
 		<item name="wcf.acp.option.minecraft_profile_enabled"><![CDATA[Minecraft-Profil aktivieren]]></item>
-		<item name="wcf.acp.option.minecraft_profile_enabled.description"><![CDATA[Soll im Profil der Minecraft-Reiter angezeigt werden.]]></item>
-	</category>
-	<category name="wcf.user.profile">
-		<item name="wcf.user.profile.menu.MinecraftUUIDs"><![CDATA[Minecraft-Accounts]]></item>
+		<item name="wcf.acp.option.minecraft_profile_enabled.description"><![CDATA[<p>Aktiviert / Deaktiviert Minecraft-Profile.</p>
+<p>Links für Plugin-Konfiguration:</p>
+<p><kbd>{link controller='MinecraftProfile' forceFrontend=true}{/link}</kbd></p>]]></item>
 	</category>
 </language>
