@@ -62,7 +62,8 @@ class MinecraftProfile extends DatabaseObject
      * Weather image is generated
      * @return ?bool
      */
-    public function hasGeneratedImage() {
+    public function hasGeneratedImage()
+    {
         return $this->imageGenerated;
     }
 
@@ -70,7 +71,8 @@ class MinecraftProfile extends DatabaseObject
      * Weather user is online
      * @return ?bool
      */
-    public function isOnline() {
+    public function isOnline()
+    {
         return $this->online;
     }
 }

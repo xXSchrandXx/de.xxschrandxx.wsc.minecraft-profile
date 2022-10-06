@@ -25,7 +25,6 @@ use wcf\system\MCSkinPreviewAPI\adapter\ISkinRenderer;
  */
 class ImagickSkinRenderer implements ISkinRenderer
 {
-
     /** @var int the width of the rendered skin (corresponding height will be calculated automatically) */
     private $skin_width;
 
@@ -87,7 +86,7 @@ class ImagickSkinRenderer implements ISkinRenderer
      * @param string $skin_side the side of the skin to render; must be 'front', 'back' or 'face'
      *
      * @return \Imagick|false A resource containing the rendered skin.
-     * 
+     *
      * @throws \ImagickException
      */
     private function renderSkin($skin_type = 'steve', $skin_side = 'front')
@@ -106,7 +105,7 @@ class ImagickSkinRenderer implements ISkinRenderer
 
         // Copy all the parts of the skin where they belong to, on a new blank image
 
-        switch($skin_side) {
+        switch ($skin_side) {
             case 'front':
                 // Making a preview of the front of the skin
 
@@ -353,7 +352,6 @@ class ImagickSkinRenderer implements ISkinRenderer
         // Check for a 8*8 square of pixels starting at ($x;$y)
         for ($i = $x; $i < $x + $w; $i++) {
             for ($j = $y; $j < $y + $h; $j++) {
-
                 // If this pixel isn't the same color as the first one, then return false
                 if (
                     $img->getImagePixelColor($i, $j)->getColor() == 255
