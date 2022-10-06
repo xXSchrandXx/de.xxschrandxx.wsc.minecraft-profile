@@ -8,14 +8,6 @@
             <boxType>system</boxType>
             <objectType>de.xxschrandxx.wsc.minecraft-profile.MinecraftOnlineBox</objectType>
             <position>sidebarRight</position>
-            <showHeader>0</showHeader>
-            <visibleEverywhere>0</visibleEverywhere>
-            <content language="de">
-                <title>Online-Player</title>
-            </content>
-            <content language="en">
-                <title>Online-Player</title>
-            </content>
         </box>
 	</import>
 </data>
