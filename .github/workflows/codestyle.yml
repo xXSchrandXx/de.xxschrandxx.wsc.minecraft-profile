@@ -16,5 +16,9 @@ jobs:
         php-version: '8.1'
         extensions: ctype, dom, exif, gd, gmp, hash, intl, json, libxml, mbstring, opcache, pcre, pdo, pdo_mysql, zlib
         tools: cs2pr, phpcs
-    - name: phpcs
-      run: phpcs -q -n --report=checkstyle files | cs2pr
+      - name: Check PHP code style
+        continue-on-error: true
+        run: phpcs --report-full --report-checkstyle=./phpcs-report.xml
+
+      - name: Show PHPCS results in PR
+        run: cs2pr ./phpcs-report.xml
