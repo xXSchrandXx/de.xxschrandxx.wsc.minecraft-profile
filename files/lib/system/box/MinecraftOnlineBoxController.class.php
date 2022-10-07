@@ -69,9 +69,38 @@ class MinecraftOnlineBoxController extends AbstractDatabaseObjectListBoxControll
                 }
             }
         }
+
+        /** @var \wcf\data\minecraft\MinecraftProfile[] */
+        $minecafProfiles = $this->objectList->getObjects();
+
+        $onlineList = [];
+        foreach ($minecafProfiles as $minecraftProfileID => $minecraftProfile) {
+            if (!array_key_exists($minecraftProfile->getMinecraftUUID(), $onlineList)) {
+                $user = null;
+                if (array_key_exists($minecraftProfile->getMinecraftUUID(), $minecraftUUIDToUserIDs)) {
+                    $user = $minecraftUUIDToUserIDs[$minecraftUser->getMinecraftUUID()];
+                }
+                $onlineList[$minecraftProfile->getMinecraftUUID()] = [
+                    'user' => $user,
+                    'minecraftName' => $minecraftProfile->getMinecraftName(),
+                    'hasGeneratedImage' => $minecraftProfile->hasGeneratedImage()
+                ];
+                continue;
+            }
+            if (!$onlineList[$minecraftProfile->getMinecraftUUID()]['hasGeneratedImage']) {
+                $onlineList[$minecraftProfile->getMinecraftUUID()]['hasGeneratedImage'] = $minecraftProfile->hasGeneratedImage();
+            }
+            if (isset($onlineList[$minecraftProfile->getMinecraftUUID()]['user'])) {
+                $user = null;
+                if (array_key_exists($minecraftProfile->getMinecraftUUID(), $minecraftUUIDToUserIDs)) {
+                    $user = $minecraftUUIDToUserIDs[$minecraftUser->getMinecraftUUID()];
+                }
+                $onlineList[$minecraftProfile->getMinecraftUUID()]['user'] = $user;
+            }
+        }
+
         return WCF::getTPL()->fetch('boxMinecraftOnlineList', 'wcf', [
-            'boxMinecraftProfiles' => $this->objectList->getObjects(),
-            'boxMinecraftUsers' => $minecraftUUIDToUserIDs
+            'boxMinecraftOnlineList' => $onlineList
         ], true);
     }
 }
