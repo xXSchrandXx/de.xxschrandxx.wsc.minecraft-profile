@@ -42,8 +42,6 @@ class MinecraftIDCondition extends AbstractMultiSelectCondition implements IObje
             throw new InvalidObjectArgument($objectList, MinecraftProfileList::class, 'Object list');
         }
 
-        $objectList->sqlSelects = 'DISTINCT minecraftUUID';
-
         $objectList->getConditionBuilder()->add(
             $this->fieldName . ' IN (?)',
             [$conditionData[$this->fieldName]]
