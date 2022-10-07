@@ -87,9 +87,11 @@ class MinecraftOnlineBoxController extends AbstractDatabaseObjectListBoxControll
                 ];
                 continue;
             }
+            // Update hasImage if false
             if (!$onlineList[$minecraftProfile->getMinecraftUUID()]['hasGeneratedImage']) {
                 $onlineList[$minecraftProfile->getMinecraftUUID()]['hasGeneratedImage'] = $minecraftProfile->hasGeneratedImage();
             }
+            // Update user if not set
             if (isset($onlineList[$minecraftProfile->getMinecraftUUID()]['user'])) {
                 $user = null;
                 if (array_key_exists($minecraftProfile->getMinecraftUUID(), $minecraftUUIDToUserIDs)) {
