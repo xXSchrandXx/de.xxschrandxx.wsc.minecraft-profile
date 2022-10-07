@@ -1,15 +1,19 @@
 {hascontent}
-	<ul class="sidebarItemList">
+	<ul class="sidebarItemList" style="display: flex; gap: 10px;">
 		{content}
-			{foreach from=$boxMinecraftProfileList item=boxMinecraftProfile}
+			{foreach from=$boxMinecraftProfiles item=boxMinecraftProfile}
 				<li>
-					<div class="sidebarItemTitle">
-						{if $boxMinecraftProfile->hasGeneratedImage()}
-							<img src="images/skins/{$boxMinecraftProfile->getMinecraftUUID()}-FACE.png" alt="{$boxMinecraftProfile->getMinecraftName()}"/>
-						{else}
-							<img src="images/skins/default-FACE.png" alt="{$boxMinecraftProfile->getMinecraftName()}"/>
-						{/if}
-					</div>
+					{if !$boxMinecraftUsers|empty && $boxMinecraftUsers[$boxMinecraftProfile->getMinecraftUUID()]|isset}
+						<a href="{$boxMinecraftUsers[$boxMinecraftProfile->getMinecraftUUID()]->getLink()}" data-object-id="{$boxMinecraftUsers[$boxMinecraftProfile->getMinecraftUUID()]->userID}" class="userLink">
+					{/if}
+					{if $boxMinecraftProfile->hasGeneratedImage()}
+						<img src="images/skins/{$boxMinecraftProfile->getMinecraftUUID()}-FACE.png" title="{$boxMinecraftProfile->getMinecraftName()}" alt="{$boxMinecraftProfile->getMinecraftName()}" with="32" height="32"/>
+					{else}
+						<img src="images/skins/default-FACE.png" title="{$boxMinecraftProfile->getMinecraftName()}" alt="{$boxMinecraftProfile->getMinecraftName()}" with="32" height="32"/>
+					{/if}
+					{if !$boxMinecraftUsers|empty && $boxMinecraftUsers[$boxMinecraftProfile->getMinecraftUUID()]|isset}
+						</a>
+					{/if}
 				</li>
 			{/foreach}
 		{/content}
