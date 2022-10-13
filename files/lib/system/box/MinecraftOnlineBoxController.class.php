@@ -72,10 +72,9 @@ class MinecraftOnlineBoxController extends AbstractDatabaseObjectListBoxControll
             SingleSelectionFormField::create($prefix . 'imageType')
                 ->objectProperty('imageType')
                 ->label('wcf.acp.box.controller.imageType')
-                ->description('wcf.acp.box.controller.imageType.description')
                 ->options([
-                    'FACE',
-                    'FRONT'
+                    'FACE' => 'wcf.acp.box.controller.imageType.FACE',
+                    'FRONT' => 'wcf.acp.box.controller.imageType.FRONT'
                 ])
                 ->addDependency(
                     ValueFormFieldDependency::create('boxType')
@@ -85,7 +84,6 @@ class MinecraftOnlineBoxController extends AbstractDatabaseObjectListBoxControll
             IntegerFormField::create($prefix . 'imageWidth')
                 ->objectProperty('imageWidth')
                 ->label('wcf.acp.box.controller.imageWidth')
-                ->description('wcf.acp.box.controller.imageWidth.description')
                 ->addDependency(
                     ValueFormFieldDependency::create('boxType')
                         ->field($objectTypeField)
@@ -242,13 +240,6 @@ class MinecraftOnlineBoxController extends AbstractDatabaseObjectListBoxControll
     public function setBox(Box $box, $setConditionData = true)
     {
         parent::setBox($box, $setConditionData);
-
-        if ($this->box->imageType) {
-            $this->imageType = $this->box->imageType;
-        }
-        if ($this->box->imageWidth) {
-            $this->imageWidth = \intval($this->box->imageWidth);
-        }
 
         if ($setConditionData) {
             if ($this->box->imageType) {

@@ -3,18 +3,18 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/5.4/language.xsd" languagecode="de">
 	<category name="wcf.acp.option">
 		<item name="wcf.acp.option.category.minecraft_profile"><![CDATA[Minecraft-Profile]]></item>
-		<item name="wcf.acp.option.category.minecraft_profile_general"><![CDATA[Allgemeine Einstellungen]]></item>
-		<item name="wcf.acp.option.minecraft_profile_enabled"><![CDATA[Minecraft-Profile aktivieren]]></item>
-		<item name="wcf.acp.option.minecraft_profile_enabled.description"><![CDATA[<p>Aktiviert / Deaktiviert Minecraft-Profile.</p>
-<p>Links für Plugin-Konfiguration:</p>
+		<item name="wcf.acp.option.category.minecraft_profile_general"><![CDATA[General Settings]]></item>
+		<item name="wcf.acp.option.minecraft_profile_enabled"><![CDATA[Activate Minecraft-Profile]]></item>
+		<item name="wcf.acp.option.minecraft_profile_enabled.description"><![CDATA[<p>Enabled / Disabled Minecraft-Profile.</p>
+<p>Links for plugin configuration:</p>
 <p><kbd>{link controller='MinecraftProfile' forceFrontend=true}{/link}</kbd></p>]]></item>
 	</category>
 	<category name="wcf.acp.box">
 		<item name="wcf.acp.box.boxController.de.xxschrandxx.wsc.minecraft-profile.MinecraftOnlineBox"><![CDATA[Minecraft Online User]]></item>
-		<item name="wcf.acp.box.controller.imageType"><![CDATA[Bild-Typ]]></item>
-		<item name="wcf.acp.box.controller.imageType.FACE"><![CDATA[Gesicht]]></item>
-		<item name="wcf.acp.box.controller.imageType.FRONT"><![CDATA[Vorderseite]]></item>
-		<item name="wcf.acp.box.controller.imageWidth"><![CDATA[Bildbreite]]></item>
+		<item name="wcf.acp.box.controller.imageType"><![CDATA[Image-Type]]></item>
+		<item name="wcf.acp.box.controller.imageType.FACE"><![CDATA[Face]]></item>
+		<item name="wcf.acp.box.controller.imageType.FRONT"><![CDATA[Front]]></item>
+		<item name="wcf.acp.box.controller.imageWidth"><![CDATA[Image width]]></item>
 		<item name="wcf.acp.box.minecraft.MinecraftOnlineBox.condition.minecraftID"><![CDATA[MinecraftIDs]]></item>
 	</category>
 </language>
