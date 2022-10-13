@@ -53,7 +53,6 @@ class MinecraftOnlineBoxController extends AbstractDatabaseObjectListBoxControll
         'sidebarRight',
     ];
 
-    
     /**
      * @inheritDoc
      */
@@ -250,7 +249,7 @@ class MinecraftOnlineBoxController extends AbstractDatabaseObjectListBoxControll
         if ($this->box->imageWidth) {
             $this->imageWidth = \intval($this->box->imageWidth);
         }
-        
+
         if ($setConditionData) {
             if ($this->box->imageType) {
                 $this->imageType = $this->box->imageType;
