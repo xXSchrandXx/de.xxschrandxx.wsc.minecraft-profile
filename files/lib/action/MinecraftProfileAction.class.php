@@ -102,7 +102,7 @@ class MinecraftProfileAction extends AbstractMinecraftLinkerAction
 
         // Set MinecraftProfile
         $minecraftProfileList = new MinecraftProfileList();
-        $minecraftProfileList->getConditionBuilder()->add('minecraftID = ? AND minecraftUUID = ?', [$this->minecraftID, $this->uuid]);
+        $minecraftProfileList->getConditionBuilder()->add('minecraftID = ? AND minecraftUUID = ?', [$this->minecraft->minecraftID, $this->uuid]);
         $minecraftProfileList->readObjects();
 
         try {
@@ -112,7 +112,7 @@ class MinecraftProfileAction extends AbstractMinecraftLinkerAction
         }
         if (!isset($this->minecraftProfile)) {
             $this->minecraftProfile = MinecraftProfileEditor::create([
-                'minecraftID' => $this->minecraftID,
+                'minecraftID' => $this->minecraft->minecraftID,
                 'minecraftUUID' => $this->uuid,
                 'minecraftName' => $this->name
             ]);
@@ -163,8 +163,12 @@ class MinecraftProfileAction extends AbstractMinecraftLinkerAction
             }
         }
 
+        // TODO Check if steve or alex
+        $skinType = 'steve';
+
+        // Render face
         $rendererFace = new SkinRendererHandler();
-        $renderedFace = $rendererFace->renderSkinFromResource($rawImage, 'steve', 'face');
+        $renderedFace = $rendererFace->renderSkinFromResource($rawImage, $skinType, 'face');
         if (!$renderedFace) {
             if (ENABLE_DEBUG_MODE) {
                 return $this->send('Bad Request. Could not generate Image.', 400);
@@ -173,6 +177,18 @@ class MinecraftProfileAction extends AbstractMinecraftLinkerAction
             }
         }
         $rendererFace->writeImage($renderedFace, "images/skins/" . $this->uuid . "-FACE.png");
+
+        // Render front
+        $rendererFront = new SkinRendererHandler();
+        $renderedFront = $rendererFront->renderSkinFromResource($rawImage, $skinType, 'front');
+        if (!$renderedFront) {
+            if (ENABLE_DEBUG_MODE) {
+                return $this->send('Bad Request. Could not generate Image.', 400);
+            } else {
+                return $this->send('Bad request.', 400);
+            }
+        }
+        $rendererFront->writeImage($renderedFront, "images/skins/" . $this->uuid . "-FRONT.png");
 
         $minecraftProfileEditor->update([
             'imageGenerated' => true

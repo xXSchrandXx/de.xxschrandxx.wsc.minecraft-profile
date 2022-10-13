@@ -15,7 +15,7 @@
 				<categoryname>minecraft_profile_general</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>1</defaultvalue>
-				<enableoptions>minecraft_profile_general,minecraft_profile_onlinemode</enableoptions>
+				<enableoptions>minecraft_profile_general</enableoptions>
 			</option>
 		</options>
 	</import>

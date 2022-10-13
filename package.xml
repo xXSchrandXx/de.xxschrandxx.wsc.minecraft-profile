@@ -26,13 +26,14 @@
 	</excludedpackages>
 
 	<instructions type="install">
+		<instruction type="acpTemplate"/>
 		<instruction type="file"/>
 		<instruction type="language"/>
 		<instruction type="option"/>
 		<instruction type="objectTypeDefinition"/>
 		<instruction type="objectType"/>
-		<instruction type="box"/>
 		<instruction type="template"/>
+		<instruction type="templateListener"/>
 		<instruction type="database">acp/database/install_de.xxschrandxx.wsc.minecraft-profile.php</instruction>
 	</instructions>
 </package>
