@@ -5,8 +5,8 @@
 	<packageinformation>
 		<packagename><![CDATA[Minecraft Profile]]></packagename>
 		<packagename language="de"><![CDATA[Minecraft-Profile]]></packagename>
-		<packagedescription><![CDATA[Adds a profile menu with Minecraft account-information.]]></packagedescription>
-		<packagedescription language="de"><![CDATA[Fügt ein Profilmenü mit Minecraft Account-Informationen hinzu.]]></packagedescription>
+		<packagedescription><![CDATA[Adds a box with online minecraft players.]]></packagedescription>
+		<packagedescription language="de"><![CDATA[Fügt eine Box mit Online Minecraft-Spielern hinzu.]]></packagedescription>
 		<version>0.0.1 dev 1</version>
 		<date>2021-11-08</date>
 	</packageinformation>
