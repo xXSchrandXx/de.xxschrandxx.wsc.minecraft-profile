@@ -31,7 +31,7 @@ class MinecraftIDCondition extends AbstractMultiSelectCondition implements IObje
     /**
      * @inheritDoc
      */
-    protected $label = 'wcf.minecraft.MinecraftOnlineBox.condition.minecraftID';
+    protected $label = 'wcf.acp.box.minecraft.MinecraftOnlineBox.condition.minecraftID';
 
     /**
      * @inheritDoc
