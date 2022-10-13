@@ -5,9 +5,9 @@
 	<packageinformation>
 		<packagename><![CDATA[Minecraft Profile]]></packagename>
 		<packagename language="de"><![CDATA[Minecraft-Profile]]></packagename>
-		<packagedescription><![CDATA[Adds a profile menu with Minecraft account-information.]]></packagedescription>
-		<packagedescription language="de"><![CDATA[Fügt ein Profilmenü mit Minecraft Account-Informationen hinzu.]]></packagedescription>
-		<version>0.0.1 dev 1</version>
+		<packagedescription><![CDATA[Adds a box with online minecraft players.]]></packagedescription>
+		<packagedescription language="de"><![CDATA[Fügt eine Box mit Online Minecraft-Spielern hinzu.]]></packagedescription>
+		<version>1.0.0</version>
 		<date>2021-11-08</date>
 	</packageinformation>
 
@@ -17,19 +17,23 @@
 
 	<requiredpackages>
 		<requiredpackage minversion="5.3.0">com.woltlab.wcf</requiredpackage>
-		<requiredpackage minversion="1.0.4" file="requirements/de.xxschrandxx.wsc.minecraft-linker.tar">de.xxschrandxx.wsc.minecraft-linker</requiredpackage>
+		<requiredpackage minversion="3.0.2 dev 1">de.xxschrandxx.wsc.minecraft-linker</requiredpackage>
 	</requiredpackages>
 
 	<excludedpackages>
 		<excludedpackage version="6.0.0 Alpha 1">com.woltlab.wcf</excludedpackage>
+		<excludedpackage version="4.0.0">de.xxschrardxx.wsc.minecraft-linker</excludedpackage>
 	</excludedpackages>
 
 	<instructions type="install">
+		<instruction type="acpTemplate"/>
 		<instruction type="file"/>
 		<instruction type="language"/>
 		<instruction type="option"/>
+		<instruction type="objectTypeDefinition"/>
+		<instruction type="objectType"/>
 		<instruction type="template"/>
-		<instruction type="userOption"/>
-		<instruction type="userProfileMenu"/>
+		<instruction type="templateListener"/>
+		<instruction type="database">acp/database/install_de.xxschrandxx.wsc.minecraft-profile.php</instruction>
 	</instructions>
 </package>
