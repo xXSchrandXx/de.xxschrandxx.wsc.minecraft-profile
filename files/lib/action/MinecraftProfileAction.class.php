@@ -53,6 +53,10 @@ class MinecraftProfileAction extends AbstractMinecraftLinkerAction
     {
         $result = parent::readParameters();
 
+        if ($result !== null) {
+            return $result;
+        }
+
         // check online
         if (!array_key_exists('online', $this->getJSON())) {
             if (ENABLE_DEBUG_MODE) {
