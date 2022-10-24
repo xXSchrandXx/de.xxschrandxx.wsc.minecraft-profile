@@ -158,7 +158,7 @@ class MinecraftProfileAction extends AbstractMinecraftLinkerAction
         }
         $rawImage = null;
         try {
-            $rawImage = $response->getBody()->getContents();
+            $rawImage = $response->getBody();
         } catch (RuntimeException $e) {
             if (ENABLE_DEBUG_MODE) {
                 return $this->send('Bad Request. Could not read mojang texture server response: ' . $e->getMessage() . '.', 400);
