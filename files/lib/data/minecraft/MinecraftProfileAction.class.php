@@ -16,4 +16,27 @@ class MinecraftProfileAction extends AbstractDatabaseObjectAction
      * @inheritDoc
      */
     protected $className = MinecraftProfileEditor::class;
+
+    /**
+     * @inheritDoc
+     */
+    public function delete()
+    {
+        if (empty($this->objects)) {
+            $this->readObjects();
+        }
+
+        foreach ($this->objects as $object) {
+            if (!$object->hasGeneratedImage()) {
+                continue;
+            }
+
+            // Delete Face
+            \unlink(WCF_DIR . "images/skins/" . $object->getMinecraftUUID() . "-FACE.png");
+            // Delete Front
+            \unlink(WCF_DIR . "images/skins/" . $object->getMinecraftUUID() . "-FRONT.png");
+        }
+
+        return parent::delete();
+    }
 }
