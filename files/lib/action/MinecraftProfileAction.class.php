@@ -180,7 +180,7 @@ class MinecraftProfileAction extends AbstractMinecraftLinkerAction
                 return $this->send('Bad request.', 400);
             }
         }
-        $rendererFace->writeImage($renderedFace, "images/skins/" . $this->uuid . "-FACE.png");
+        $rendererFace->writeImage($renderedFace, WCF_DIR . "images/skins/" . $this->uuid . "-FACE.png");
 
         // Render front
         $rendererFront = new SkinRendererHandler();
@@ -192,7 +192,7 @@ class MinecraftProfileAction extends AbstractMinecraftLinkerAction
                 return $this->send('Bad request.', 400);
             }
         }
-        $rendererFront->writeImage($renderedFront, "images/skins/" . $this->uuid . "-FRONT.png");
+        $rendererFront->writeImage($renderedFront, WCF_DIR . "images/skins/" . $this->uuid . "-FRONT.png");
 
         $minecraftProfileEditor->update([
             'imageGenerated' => true
