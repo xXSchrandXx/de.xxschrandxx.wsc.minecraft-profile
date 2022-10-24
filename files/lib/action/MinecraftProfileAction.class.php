@@ -167,7 +167,10 @@ class MinecraftProfileAction extends AbstractMinecraftLinkerAction
             }
         }
 
-        // TODO Check if steve or alex
+        /*
+         * TODO Check if steve or alex
+         * (Remove black line in front and back)
+         */
         $skinType = 'steve';
 
         // Render face
