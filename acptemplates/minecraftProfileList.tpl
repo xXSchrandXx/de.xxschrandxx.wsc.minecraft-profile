@@ -16,7 +16,7 @@
 
 {if $objects|count}
     <div class="section tabularBox">
-        <table class="table jsObjectActionContainer" data-object-action-class-name="wcf\data\minecraft\MinecraftAction">
+        <table class="table jsObjectActionContainer" data-object-action-class-name="wcf\data\minecraft\MinecraftProfileAction">
             <thead>
                 <tr>
                     <th></th>
