@@ -27,6 +27,7 @@
 
 	<instructions type="install">
 		<instruction type="acpTemplate"/>
+		<instruction type="acpMenu"/>
 		<instruction type="file"/>
 		<instruction type="language"/>
 		<instruction type="option"/>
