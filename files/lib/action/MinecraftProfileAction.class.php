@@ -175,7 +175,7 @@ class MinecraftProfileAction extends AbstractMinecraftLinkerAction
 
         // Render face
         $rendererFace = new SkinRendererHandler();
-        $renderedFace = $rendererFace->renderSkinFromResource($rawImage, $skinType, 'face');
+        $renderedFace = $rendererFace->renderSkinFromResource((string) $rawImage, $skinType, 'face');
         if (!$renderedFace) {
             if (ENABLE_DEBUG_MODE) {
                 return $this->send('Bad Request. Could not generate Image.', 400);
