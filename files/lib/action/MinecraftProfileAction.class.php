@@ -133,7 +133,7 @@ class MinecraftProfileAction extends AbstractMinecraftLinkerAction
             return $this->send();
         }
         // skip if url is the same
-        if (isset($this->url) && $this->minecraftProfile->url == $this->url && !$this->minecraftProfile->imageGenerated) {
+        if (isset($this->url) && $this->minecraftProfile->url == $this->url && $this->minecraftProfile->imageGenerated) {
             return $this->send();
         }
 
