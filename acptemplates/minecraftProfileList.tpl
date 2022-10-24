@@ -39,8 +39,20 @@
                         <td class="columnID">{#$object->getMinecraftID()}</td>
                         <td class="columnTitle">{$object->getMinecraftUUID()}</td>
 						<td class="columnUsername">{$object->getMinecraftName()}</td>
-						<td class="columnBoolean">{$object->hasGeneratedImage()}</td>
-						<td class="columnBoolean">{$object->isOnline()}</td>
+						<td class="columnBoolean">
+							{if $object->hasGeneratedImage()}
+								{lang}wcf.global.form.boolean.yes{/lang}
+							{else}
+								{lang}wcf.global.form.boolean.no{/lang}
+							{/if}
+						</td>
+						<td class="columnBoolean">
+							{if $object->isOnline()}
+								{lang}wcf.global.form.boolean.yes{/lang}
+							{else}
+								{lang}wcf.global.form.boolean.no{/lang}
+							{/if}
+						</td>
                     </tr>
                 {/foreach}
             </tbody>
