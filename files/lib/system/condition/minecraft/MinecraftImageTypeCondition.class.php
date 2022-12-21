@@ -7,6 +7,7 @@ use wcf\data\minecraft\MinecraftProfileList;
 use wcf\system\condition\AbstractSelectCondition;
 use wcf\system\condition\IObjectListCondition;
 use wcf\system\exception\InvalidObjectArgument;
+use wcf\util\StringUtil;
 
 /**
  * ImageType PropertyCondition class
@@ -50,5 +51,15 @@ class MinecraftImageTypeCondition extends AbstractSelectCondition implements IOb
             'FACE' => 'wcf.acp.box.controller.imageType.FACE',
             'FRONT' => 'wcf.acp.box.controller.imageType.FRONT',
         ];
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function readFormParameters()
+    {
+        if (isset($_POST[$this->fieldName])) {
+            $this->fieldValue = StringUtil::trim($_POST[$this->fieldName]);
+        }
     }
 }
