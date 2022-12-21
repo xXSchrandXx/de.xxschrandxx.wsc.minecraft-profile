@@ -13,7 +13,6 @@ use wcf\system\form\builder\field\IntegerFormField;
 use wcf\system\form\builder\field\SingleSelectionFormField;
 use wcf\system\form\builder\IFormDocument;
 use wcf\system\WCF;
-use wcf\util\StringUtil;
 
 /**
  * MinecraftOnline Box class
@@ -162,11 +161,16 @@ class MinecraftOnlineBoxController extends AbstractDatabaseObjectListBoxControll
      */
     public function readConditions()
     {
-        if (isset($_POST['imageType'])) {
-            $this->imageType = StringUtil::trim($_POST['imageType']);
-        }
-        if (isset($_POST['imageWidth'])) {
-            $this->imageWidth = \intval($_POST['imageWidth']);
+        foreach ($this->box->getControllerConditions() as $condition) {
+            if (
+                $condition->getObjectType()->objectType === 'de.xxschrandxx.wsc.minecraft-profile.imageType'
+            ) {
+                $this->imageType = $condition->imageType;
+            } else if (
+                $condition->getObjectType()->objectType === 'de.xxschrandxx.wsc.minecraft-profile.imageWidth'
+            ) {
+                $this->imageWidth = $condition->imageWidth;
+            }
         }
 
         parent::readConditions();
