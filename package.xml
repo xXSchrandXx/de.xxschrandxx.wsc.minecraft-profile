@@ -26,7 +26,11 @@
 	</excludedpackages>
 
 	<instructions type="update" fromversion="1.0.0">
+		<instruction type="acpTemplate"/>
+		<instruction type="file"/>
 		<instruction type="templateListener"/>
+		<instruction type="objectTypeDefinition"/>
+		<instruction type="objectType"/>
 	</instructions>
 
 	<instructions type="install">
