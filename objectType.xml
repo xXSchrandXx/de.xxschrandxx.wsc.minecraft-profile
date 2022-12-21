@@ -12,5 +12,15 @@
 			<definitionname>de.xxschrandxx.wsc.minecraft-profile.MinecraftOnlineBox.condition</definitionname>
 			<classname>wcf\system\condition\minecraft\MinecraftIDCondition</classname>
 		</type>
+		<type>
+			<name>de.xxschrandxx.wsc.minecraft-profile.imageType</name>
+			<definitionname>de.xxschrandxx.wsc.minecraft-profile.MinecraftOnlineBox.condition</definitionname>
+			<classname>wcf\system\condition\minecraft\MinecraftImageTypeCondition</classname>
+		</type>
+		<type>
+			<name>de.xxschrandxx.wsc.minecraft-profile.imageWidth</name>
+			<definitionname>de.xxschrandxx.wsc.minecraft-profile.MinecraftOnlineBox.condition</definitionname>
+			<classname>wcf\system\condition\minecraft\MinecraftImageWidthCondition</classname>
+		</type>
 	</import>
 </data>
