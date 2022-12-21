@@ -1,4 +1,4 @@
-{if $imageType !== null}
+{if $imageType|isset}
 <dl{if $errorField === 'imageType'} class="formError"{/if}>
 	<dt><label for="imageType">{lang}wcf.acp.box.controller.imageType{/lang}</label></dt>
 	<dd>
@@ -15,7 +15,7 @@
 	</dd>
 </dl>
 {/if}
-{if $imageWidth !== null}
+{if $imageWidth|isset}
 <dl{if $errorField === 'imageWidth'} class="formError"{/if}>
 	<dt><label for="imageWidth">{lang}wcf.acp.box.controller.imageWidth{/lang}</label></dt>
 	<dd>
