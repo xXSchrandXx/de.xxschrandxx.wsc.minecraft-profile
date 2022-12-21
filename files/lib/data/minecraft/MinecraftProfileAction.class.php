@@ -42,9 +42,9 @@ class MinecraftProfileAction extends AbstractDatabaseObjectAction
             }
 
             // Delete Face
-            \unlink(WCF_DIR . "images/skins/" . $object->getMinecraftUUID() . "-FACE.png");
+            @unlink(WCF_DIR . "images/skins/" . $object->getMinecraftUUID() . "-FACE.png");
             // Delete Front
-            \unlink(WCF_DIR . "images/skins/" . $object->getMinecraftUUID() . "-FRONT.png");
+            @unlink(WCF_DIR . "images/skins/" . $object->getMinecraftUUID() . "-FRONT.png");
         }
 
         return parent::delete();
