@@ -49,7 +49,7 @@ class MinecraftProfileAction extends AbstractMinecraftLinkerAction
     /**
      * @inheritDoc
      */
-    public function readParameters()
+    public function readParameters(): void
     {
         parent::readParameters();
 
@@ -96,6 +96,8 @@ class MinecraftProfileAction extends AbstractMinecraftLinkerAction
      */
     public function execute(): JsonResponse
     {
+        parent::execute();
+
         // Set MinecraftProfile
         $minecraftProfileList = new MinecraftProfileList();
         $minecraftProfileList->getConditionBuilder()->add('minecraftID = ? AND minecraftUUID = ?', [$this->minecraft->minecraftID, $this->uuid]);
