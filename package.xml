@@ -7,7 +7,7 @@
 		<packagename language="de"><![CDATA[Minecraft-Profile]]></packagename>
 		<packagedescription><![CDATA[Adds a box with online minecraft players.]]></packagedescription>
 		<packagedescription language="de"><![CDATA[Fügt eine Box mit Online Minecraft-Spielern hinzu.]]></packagedescription>
-		<version>1.0.1</version>
+		<version>1.0.2</version>
 		<date>2021-11-08</date>
 	</packageinformation>
 
@@ -25,10 +25,9 @@
 		<excludedpackage version="4.0.0">de.xxschrardxx.wsc.minecraft-linker</excludedpackage>
 	</excludedpackages>
 
-	<instructions type="update" fromversion="1.0.0">
+	<instructions type="update" fromversion="1.0.1">
 		<instruction type="acpTemplate"/>
 		<instruction type="file"/>
-		<instruction type="templateListener"/>
 		<instruction type="objectTypeDefinition"/>
 		<instruction type="objectType"/>
 	</instructions>
