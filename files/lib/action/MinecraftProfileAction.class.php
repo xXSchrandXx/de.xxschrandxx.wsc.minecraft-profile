@@ -73,7 +73,6 @@ class MinecraftProfileAction extends AbstractMinecraftLinkerAction
             }
             return;
         }
-
     }
 
     /**
