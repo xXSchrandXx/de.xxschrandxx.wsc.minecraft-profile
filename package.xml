@@ -25,11 +25,8 @@
 		<excludedpackage version="5.0.0">de.xxschrardxx.wsc.minecraft-linker</excludedpackage>
 	</excludedpackages>
 
-	<instructions type="update" fromversion="1.0.1">
-		<instruction type="acpTemplate"/>
+	<instructions type="update" fromversion="1.1.2">
 		<instruction type="file"/>
-		<instruction type="objectTypeDefinition"/>
-		<instruction type="objectType"/>
 	</instructions>
 
 	<instructions type="install">
