@@ -9,6 +9,14 @@ use wcf\data\DatabaseObject;
  *
  * @author   xXSchrandXx
  * @package  WoltLabSuite\Core\Data\Minecraft
+ * 
+ * @property-read int $profileID
+ * @property-read int $minecraftID
+ * @property-read string $minecraftUUID
+ * @property-read string $minecraftName
+ * @property-read string $url
+ * @property-read boolean $imageGenerated
+ * @property-read boolean $online
  */
 class MinecraftProfile extends DatabaseObject
 {
