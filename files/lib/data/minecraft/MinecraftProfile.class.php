@@ -9,7 +9,7 @@ use wcf\data\DatabaseObject;
  *
  * @author   xXSchrandXx
  * @package  WoltLabSuite\Core\Data\Minecraft
- * 
+ *
  * @property-read int $profileID
  * @property-read int $minecraftID
  * @property-read string $minecraftUUID
