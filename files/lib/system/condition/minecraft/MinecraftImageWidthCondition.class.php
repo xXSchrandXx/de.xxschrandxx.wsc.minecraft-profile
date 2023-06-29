@@ -51,7 +51,7 @@ class MinecraftImageWidthCondition extends AbstractSingleFieldCondition implemen
         $data = [];
         $data['imageWidth'] = $this->imageWidth;
         return $data;
-}
+    }
 
     /**
      * @inheritDoc
