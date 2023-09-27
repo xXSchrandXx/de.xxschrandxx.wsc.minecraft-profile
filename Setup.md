@@ -1,4 +1,4 @@
-# Setting up Minecraft-Sync
+# Setting up Minecraft-Profile
 [German](#German) | [English](#English)
 
 ## English
