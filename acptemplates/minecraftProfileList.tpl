@@ -28,7 +28,7 @@
                     <th>{lang}wcf.acp.page.minecraftProfileList.isOnline{/lang}</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="jsReloadPageWhenEmpty">
                 {foreach from=$objects item=object}
                     <tr class="jsObjectActionObject" data-object-id="{@$object->getObjectID()}">
                         <td class="columnIcon">
