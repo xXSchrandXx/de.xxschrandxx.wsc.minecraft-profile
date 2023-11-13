@@ -74,6 +74,24 @@ class MinecraftProfileAction extends AbstractMinecraftLinkerAction
             }
             return;
         }
+
+        // check skin type
+        if (!array_key_exists('type', $parameters)) {
+            if (ENABLE_DEBUG_MODE) {
+                $response = $this->send('Bad Request. Missing \'type\'.', 400);
+            } else {
+                $response = $this->send('Bad request.', 400);
+            }
+            return;
+        }
+        if ($parameters['type'] !== 'CLASSIC' && $parameters['type'] !== 'SLIM') {
+            if (ENABLE_DEBUG_MODE) {
+                $response = $this->send('Bad Request. \'type\' is not \'CLASSIC\' or \'SLIM\'.', 400);
+            } else {
+                $response = $this->send('Bad request.', 400);
+            }
+            return;
+        }
     }
 
     /**
@@ -134,7 +152,7 @@ class MinecraftProfileAction extends AbstractMinecraftLinkerAction
             $response = $client->send($request);
         } catch (GuzzleException $e) {
             if (ENABLE_DEBUG_MODE) {
-                return $this->send('Bad Request. Could not connect to mojang texture server: ' . $e->getMessage() . '.', 400);
+                return $this->send('Bad Request. Could not connect to texture server: ' . $e->getMessage() . '.', 400);
             } else {
                 return $this->send('Bad request.', 400);
             }
@@ -144,17 +162,16 @@ class MinecraftProfileAction extends AbstractMinecraftLinkerAction
             $rawImage = $response->getBody();
         } catch (RuntimeException $e) {
             if (ENABLE_DEBUG_MODE) {
-                return $this->send('Bad Request. Could not read mojang texture server response: ' . $e->getMessage() . '.', 400);
+                return $this->send('Bad Request. Could not read response from texture server: ' . $e->getMessage() . '.', 400);
             } else {
                 return $this->send('Bad request.', 400);
             }
         }
 
         /*
-         * TODO Check if steve or alex
          * (Remove black line in front and back)
          */
-        $skinType = 'steve';
+        $skinType = $parameters['type'] == 'CLASSIC' ? 'steve' : 'alex';
 
         // Render face
         $rendererFace = new SkinRendererHandler();
