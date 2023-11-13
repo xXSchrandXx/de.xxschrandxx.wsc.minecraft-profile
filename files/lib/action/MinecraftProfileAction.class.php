@@ -51,7 +51,7 @@ class MinecraftProfileAction extends AbstractMinecraftLinkerAction
             }
             return;
         }
-        if ($parameters['online'] !== 1 && $parameters['online'] !== 1) {
+        if ($parameters['online'] !== 1 && $parameters['online'] !== 0) {
             if (ENABLE_DEBUG_MODE) {
                 $response = $this->send('Bad Request. \'online\' is not 1 or 0.', 400);
             } else {
