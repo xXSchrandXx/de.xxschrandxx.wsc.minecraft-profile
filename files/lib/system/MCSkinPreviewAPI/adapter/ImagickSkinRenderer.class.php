@@ -8,7 +8,7 @@ use wcf\system\MCSkinPreviewAPI\adapter\ISkinRenderer;
 /*
  * ImagickSkinRenderer.class.php - Library to render previews of Minecraft (tm) skins
  * Copyright outadoc (https://github.com/outadoc/MC-SkinPreviewAPI)
- * Modified xXSchrandXx
+ * Modified xXSchrandXx (https://github.com/xXSchrandXx/MC-SkinPreviewAPI)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
