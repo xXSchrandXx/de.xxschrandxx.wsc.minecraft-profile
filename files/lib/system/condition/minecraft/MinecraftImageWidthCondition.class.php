@@ -108,7 +108,7 @@ HTML;
     public function addObjectListCondition(DatabaseObjectList $objectList, array $conditionData)
     {
         if (!($objectList instanceof MinecraftProfileList)) {
-            throw new InvalidObjectArgument($objectList, ViewableThreadList::class, 'Object list');
+            throw new InvalidObjectArgument($objectList, MinecraftProfileList::class, 'Object list');
         }
     }
 }
