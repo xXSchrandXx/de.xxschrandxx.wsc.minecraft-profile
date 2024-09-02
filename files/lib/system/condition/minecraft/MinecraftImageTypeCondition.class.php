@@ -10,7 +10,7 @@ use wcf\system\exception\InvalidObjectArgument;
 use wcf\util\StringUtil;
 
 /**
- * ImageType PropertyCondition class
+ * MinecraftImageType PropertyCondition class
  *
  * @author   xXSchrandXx
  * @package  WoltLabSuite\Core\System\Condition
@@ -35,16 +35,6 @@ class MinecraftImageTypeCondition extends AbstractSelectCondition implements IOb
     /**
      * @inheritDoc
      */
-    public function addObjectListCondition(DatabaseObjectList $objectList, array $conditionData)
-    {
-        if (!($objectList instanceof MinecraftProfileList)) {
-            throw new InvalidObjectArgument($objectList, ViewableThreadList::class, 'Object list');
-        }
-    }
-
-    /**
-     * @inheritDoc
-     */
     protected function getOptions()
     {
         return [
@@ -60,6 +50,16 @@ class MinecraftImageTypeCondition extends AbstractSelectCondition implements IOb
     {
         if (isset($_POST[$this->fieldName])) {
             $this->fieldValue = StringUtil::trim($_POST[$this->fieldName]);
+        }
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addObjectListCondition(DatabaseObjectList $objectList, array $conditionData)
+    {
+        if (!($objectList instanceof MinecraftProfileList)) {
+            throw new InvalidObjectArgument($objectList, MinecraftProfileList::class, 'Object list');
         }
     }
 }
