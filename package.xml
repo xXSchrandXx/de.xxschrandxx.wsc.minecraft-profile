@@ -7,7 +7,7 @@
 		<packagename language="de"><![CDATA[Minecraft-Profile]]></packagename>
 		<packagedescription><![CDATA[Adds a box with online minecraft players.]]></packagedescription>
 		<packagedescription language="de"><![CDATA[Fügt eine Box mit Online Minecraft-Spielern hinzu.]]></packagedescription>
-		<version>1.0.4 dev 1</version>
+		<version>1.0.5</version>
 		<date>2021-11-08</date>
 	</packageinformation>
 
@@ -16,7 +16,7 @@
 	</authorinformation>
 
 	<requiredpackages>
-		<requiredpackage minversion="6.0.0 RC 1">com.woltlab.wcf</requiredpackage>
+		<requiredpackage minversion="6.0.0 RC 2">com.woltlab.wcf</requiredpackage>
 		<requiredpackage minversion="4.0.1">de.xxschrandxx.wsc.minecraft-linker</requiredpackage>
 	</requiredpackages>
 
@@ -25,9 +25,11 @@
 		<excludedpackage version="5.0.0">de.xxschrardxx.wsc.minecraft-linker</excludedpackage>
 	</excludedpackages>
 
-	<instructions type="update" fromversion="1.0.3">
-		<instruction type="acpTemplate"/>
+	<instructions type="update" fromversion="1.0.4">
 		<instruction type="file"/>
+		<instruction type="language"/>
+		<instruction type="objectType"/>
+		<instruction type="template"/>
 	</instructions>
 
 	<instructions type="install">
