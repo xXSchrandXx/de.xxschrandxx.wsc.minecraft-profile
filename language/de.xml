@@ -15,6 +15,7 @@
 		<item name="wcf.acp.box.controller.imageType.FACE"><![CDATA[Gesicht]]></item>
 		<item name="wcf.acp.box.controller.imageType.FRONT"><![CDATA[Vorderseite]]></item>
 		<item name="wcf.acp.box.controller.imageWidth"><![CDATA[Bildbreite]]></item>
+		<item name="wcf.acp.box.controller.maxPlayers"><![CDATA[Maximale Spielerzahl]]></item>
 		<item name="wcf.acp.box.minecraft.MinecraftOnlineBox.condition.minecraftID"><![CDATA[MinecraftIDs]]></item>
 	</category>
 	<category name="wcf.acp.menu">

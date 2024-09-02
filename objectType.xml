@@ -22,5 +22,10 @@
 			<definitionname>de.xxschrandxx.wsc.minecraft-profile.MinecraftOnlineBox.condition</definitionname>
 			<classname>wcf\system\condition\minecraft\MinecraftImageWidthCondition</classname>
 		</type>
+		<type>
+			<name>de.xxschrandxx.wsc.minecraft-profile.maxPlayers</name>
+			<definitionname>de.xxschrandxx.wsc.minecraft-profile.MinecraftOnlineBox.condition</definitionname>
+			<classname>wcf\system\condition\minecraft\MinecraftMaxPlayersCondition</classname>
+		</type>
 	</import>
 </data>

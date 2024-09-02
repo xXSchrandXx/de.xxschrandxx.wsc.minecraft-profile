@@ -2,13 +2,10 @@
 
 namespace wcf\system\box;
 
-use wcf\data\box\Box;
 use wcf\data\minecraft\MinecraftProfileList;
 use wcf\data\user\minecraft\MinecraftUserList;
 use wcf\data\user\minecraft\UserToMinecraftUserList;
 use wcf\data\user\User;
-use wcf\system\exception\UserInputException;
-use wcf\system\form\builder\IFormDocument;
 use wcf\system\WCF;
 
 /**
@@ -112,6 +109,7 @@ class MinecraftOnlineBoxController extends AbstractDatabaseObjectListBoxControll
         // default values
         $imageType = 'FACE';
         $imageWidth = 32;
+        $maxPlayers = 100;
 
         foreach ($this->box->getControllerConditions() as $condition) {
             if (
@@ -122,13 +120,20 @@ class MinecraftOnlineBoxController extends AbstractDatabaseObjectListBoxControll
                 $condition->getObjectType()->objectType === 'de.xxschrandxx.wsc.minecraft-profile.imageWidth'
             ) {
                 $imageWidth = $condition->imageWidth;
+            } else if (
+                $condition->getObjectType()->objectType === 'de.xxschrandxx.wsc.minecraft-profile.maxPlayers'
+            ) {
+                $maxPlayers = $condition->maxPlayers;
             }
         }
 
         return WCF::getTPL()->fetch('boxMinecraftOnlineList', 'wcf', [
             'boxMinecraftOnlineList' => $onlineList,
             'boxMinecraftOnlineImageType' => $imageType,
-            'boxMinecraftOnlineImageWidth' => $imageWidth
+            'boxMinecraftOnlineImageWidth' => $imageWidth,
+            'boxMinecraftOnlineShowHeader' => $this->box->showHeader,
+            'boxMinecraftOnlinePlayers' => $this->objectList->countObjects(),
+            'boxMinecraftOnlineMaxPlayers' => $maxPlayers
         ], true);
     }
 }

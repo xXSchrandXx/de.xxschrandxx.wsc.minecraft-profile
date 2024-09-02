@@ -1,23 +1,30 @@
-{hascontent}
-	<ul class="sidebarItemList" style="display: flex; gap: 10px;">
-		{content}
-			{foreach from=$boxMinecraftOnlineList key=boxMinecraftOnlineUUID item=boxMinecraftOnline}
-				<li>
-					{if $boxMinecraftOnline['user']|isset}
-						<a href="{$boxMinecraftOnline['user']->getLink()}" data-object-id="{$boxMinecraftOnline['user']->userID}" class="userLink">
-					{/if}
-					{if $boxMinecraftOnline['hasGeneratedImage']}
-						<img src="{$__wcf->getPath()}/images/skins/{$boxMinecraftOnlineUUID}-{$boxMinecraftOnlineImageType}.png" title="{$boxMinecraftOnline['minecraftName']}" alt="{$boxMinecraftOnline['minecraftName']}" width="{$boxMinecraftOnlineImageWidth}"/>
-					{else}
-						<img src="{$__wcf->getPath()}/images/skins/default-{$boxMinecraftOnlineImageType}.png" title="{$boxMinecraftOnline['minecraftName']}" alt="{$boxMinecraftOnline['minecraftName']}" width="{$boxMinecraftOnlineImageWidth}"/>
-					{/if}
-					{if $boxMinecraftOnline['user']|isset}
-						</a>
-					{/if}
-				</li>
-			{/foreach}
-		{/content}
-	</ul>
-{hascontentelse}
-	<p>{lang}wcf.global.noItems{/lang}</p>
-{/hascontent}
+<h2 class="boxTitle"
+{if $boxMinecraftOnlineShowHeader}
+	 style="position: absolute; top: 20px; right: 20px"
+{/if}
+>{$boxMinecraftOnlinePlayers}/{$boxMinecraftOnlineMaxPlayers}</h2>
+<div class="boxContent">
+	{hascontent}
+		<ul class="sidebarItemList" style="display: flex; gap: 10px;">
+			{content}
+				{foreach from=$boxMinecraftOnlineList key=boxMinecraftOnlineUUID item=boxMinecraftOnline}
+					<li>
+						{if $boxMinecraftOnline['user']|isset}
+							<a href="{$boxMinecraftOnline['user']->getLink()}" data-object-id="{$boxMinecraftOnline['user']->userID}" class="userLink">
+						{/if}
+						{if $boxMinecraftOnline['hasGeneratedImage']}
+							<img src="{$__wcf->getPath()}/images/skins/{$boxMinecraftOnlineUUID}-{$boxMinecraftOnlineImageType}.png" title="{$boxMinecraftOnline['minecraftName']}" alt="{$boxMinecraftOnline['minecraftName']}" width="{$boxMinecraftOnlineImageWidth}"/>
+						{else}
+							<img src="{$__wcf->getPath()}/images/skins/default-{$boxMinecraftOnlineImageType}.png" title="{$boxMinecraftOnline['minecraftName']}" alt="{$boxMinecraftOnline['minecraftName']}" width="{$boxMinecraftOnlineImageWidth}"/>
+						{/if}
+						{if $boxMinecraftOnline['user']|isset}
+							</a>
+						{/if}
+					</li>
+				{/foreach}
+			{/content}
+		</ul>
+	{hascontentelse}
+		<p>{lang}wcf.global.noItems{/lang}</p>
+	{/hascontent}
+</div>
