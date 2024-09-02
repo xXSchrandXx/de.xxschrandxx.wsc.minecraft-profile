@@ -288,7 +288,7 @@ class ImagickSkinRenderer implements ISkinRenderer
     public function resizeBitmap(&$bmp, $width, $height)
     {
         // Copy the render to the full-sized image
-        $bmp->resizeImage($width, $height, \Imagick::FILTER_UNDEFINED, 100, true);
+        $bmp->scaleImage($width, $height);
 
         return $bmp;
     }
