@@ -1,26 +1,24 @@
 <?php
 
-namespace wcf\action;
+namespace wcf\system\endpoint\controller\xxschrandxx\minecraft\linker;
 
 use BadMethodCallException;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Psr7\Request;
-use Laminas\Diactoros\Response\JsonResponse;
+use Laminas\Diactoros\Response\EmptyResponse;
+use Psr\Http\Message\ResponseInterface;
 use RuntimeException;
 use wcf\data\minecraft\MinecraftProfileEditor;
 use wcf\data\minecraft\MinecraftProfileList;
+use wcf\http\Helper;
+use wcf\system\endpoint\PostRequest;
+use wcf\system\exception\SystemException;
+use wcf\system\exception\UserInputException;
 use wcf\system\io\HttpFactory;
 use wcf\system\MCSkinPreviewAPI\SkinRendererHandler;
 
-/**
- * MinecraftProfile action class
- *
- * @author   xXSchrandXx
- * @license  Apache License 2.0 (https://www.apache.org/licenses/LICENSE-2.0)
- * @package  WoltLabSuite\Core\Action
- */
-#[\wcf\http\attribute\DisableXsrfCheck]
-class MinecraftProfileAction extends AbstractMinecraftLinkerAction
+#[PostRequest('/xxschrandxx/minecraft/{id:\d+}/{uuid:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}}/profile')]
+final class PostProfile extends AbstractMinecraftLinker
 {
     /**
      * @inheritDoc
@@ -32,30 +30,14 @@ class MinecraftProfileAction extends AbstractMinecraftLinkerAction
      */
     public bool $ignoreName = false;
 
-    /**
-     * @inheritDoc
-     */
-    public function validateParameters($parameters, &$response): void
+    public function validateParameters($parameters)
     {
-        parent::validateParameters($parameters, $response);
-        if ($response instanceof JsonResponse) {
-            return;
-        }
-
         // check online
-        if (!array_key_exists('online', $parameters)) {
-            if (ENABLE_DEBUG_MODE) {
-                $response = $this->send('Bad Request. Missing \'online\'.', 400);
-            } else {
-                $response = $this->send('Bad request.', 400);
-            }
-            return;
-        }
         if ($parameters['online'] !== 1 && $parameters['online'] !== 0) {
             if (ENABLE_DEBUG_MODE) {
-                $response = $this->send('Bad Request. \'online\' is not 1 or 0.', 400);
+                throw new UserInputException('online', '\'online\' is not 1 or 0.');
             } else {
-                $response = $this->send('Bad request.', 400);
+                throw new UserInputException('online');
             }
             return;
         }
@@ -65,40 +47,25 @@ class MinecraftProfileAction extends AbstractMinecraftLinkerAction
             return;
         }
 
-        // check image url
-        if (!array_key_exists('url', $parameters)) {
-            if (ENABLE_DEBUG_MODE) {
-                $response = $this->send('Bad Request. Missing \'url\'.', 400);
-            } else {
-                $response = $this->send('Bad request.', 400);
-            }
-            return;
-        }
-
         // check skin type
-        if (!array_key_exists('type', $parameters)) {
-            if (ENABLE_DEBUG_MODE) {
-                $response = $this->send('Bad Request. Missing \'type\'.', 400);
-            } else {
-                $response = $this->send('Bad request.', 400);
-            }
-            return;
-        }
         if ($parameters['type'] !== 'CLASSIC' && $parameters['type'] !== 'SLIM') {
             if (ENABLE_DEBUG_MODE) {
-                $response = $this->send('Bad Request. \'type\' is not \'CLASSIC\' or \'SLIM\'.', 400);
+                throw new UserInputException('type', 'not \'CLASSIC\' or \'SLIM\'.');
             } else {
-                $response = $this->send('Bad request.', 400);
+                throw new UserInputException('type');
             }
-            return;
         }
     }
 
     /**
      * @inheritDoc
      */
-    public function execute($parameters): JsonResponse
+    public function execute(): ResponseInterface
     {
+        $parameters = Helper::mapApiParameters($this->request, PostProfileParameters::class);
+
+        $this->validateParameters($parameters);
+
         if ($parameters['online'] === 1) {
             $online = true;
         } else if ($parameters['online'] === 0) {
@@ -107,19 +74,19 @@ class MinecraftProfileAction extends AbstractMinecraftLinkerAction
 
         // Set MinecraftProfile
         $minecraftProfileList = new MinecraftProfileList();
-        $minecraftProfileList->getConditionBuilder()->add('minecraftID = ? AND minecraftUUID = ?', [$parameters['minecraftID'], $parameters['uuid']]);
+        $minecraftProfileList->getConditionBuilder()->add('minecraftID = ? AND minecraftUUID = ?', [$this->minecraftID, $this->uuid]);
         $minecraftProfileList->readObjects();
 
         try {
             $minecraftProfile = $minecraftProfileList->getSingleObject();
         } catch (BadMethodCallException $e) {
-            // do nothing
+            // handeled by isset
         }
         if (!isset($minecraftProfile)) {
             $minecraftProfile = MinecraftProfileEditor::create([
-                'minecraftID' => $parameters['minecraftID'],
-                'minecraftUUID' => $parameters['uuid'],
-                'minecraftName' => $parameters['name']
+                'minecraftID' => $this->minecraftID,
+                'minecraftUUID' => $this->uuid,
+                'minecraftName' => $this->name
             ]);
         }
 
@@ -131,11 +98,11 @@ class MinecraftProfileAction extends AbstractMinecraftLinkerAction
 
         // skip if user is not online
         if (!$online) {
-            return $this->send();
+            return new EmptyResponse(200);
         }
         // skip if url is the same
         if (isset($parameters['url']) && $minecraftProfile->url == $parameters['url'] && $minecraftProfile->imageGenerated) {
-            return $this->send();
+            return new EmptyResponse(200);
         }
 
         $minecraftProfileEditor->update([
@@ -152,9 +119,9 @@ class MinecraftProfileAction extends AbstractMinecraftLinkerAction
             $response = $client->send($request);
         } catch (GuzzleException $e) {
             if (ENABLE_DEBUG_MODE) {
-                return $this->send('Bad Request. Could not connect to texture server: ' . $e->getMessage() . '.', 400);
+                throw new SystemException('Bad Request.', 400, 'Could not connect to texture server: ' . $e->getMessage() . '.');
             } else {
-                return $this->send('Bad request.', 400);
+                throw new SystemException('Bad request.', 400);
             }
         }
         $rawImage = null;
@@ -162,9 +129,9 @@ class MinecraftProfileAction extends AbstractMinecraftLinkerAction
             $rawImage = $response->getBody();
         } catch (RuntimeException $e) {
             if (ENABLE_DEBUG_MODE) {
-                return $this->send('Bad Request. Could not read response from texture server: ' . $e->getMessage() . '.', 400);
+                throw new SystemException('Bad Request.', 400, 'Could not connect to texture server: ' . $e->getMessage() . '.');
             } else {
-                return $this->send('Bad request.', 400);
+                throw new SystemException('Bad request.', 400);
             }
         }
 
@@ -178,9 +145,9 @@ class MinecraftProfileAction extends AbstractMinecraftLinkerAction
         $renderedFace = $rendererFace->renderSkinFromResource((string) $rawImage, $skinType, 'face');
         if (!$renderedFace) {
             if (ENABLE_DEBUG_MODE) {
-                return $this->send('Bad Request. Could not generate Image.', 400);
+                throw new SystemException('Bad Request.', 400, 'Could not generate Image.');
             } else {
-                return $this->send('Bad request.', 400);
+                throw new SystemException('Bad request.', 400);
             }
         }
         $rendererFace->writeImage($renderedFace, WCF_DIR . "images/skins/" . $parameters['uuid'] . "-FACE.png");
@@ -190,9 +157,9 @@ class MinecraftProfileAction extends AbstractMinecraftLinkerAction
         $renderedFront = $rendererFront->renderSkinFromResource((string) $rawImage, $skinType, 'front');
         if (!$renderedFront) {
             if (ENABLE_DEBUG_MODE) {
-                return $this->send('Bad Request. Could not generate Image.', 400);
+                throw new SystemException('Bad Request.', 400, 'Could not generate Image.');
             } else {
-                return $this->send('Bad request.', 400);
+                throw new SystemException('Bad request.', 400);
             }
         }
         $rendererFront->writeImage($renderedFront, WCF_DIR . "images/skins/" . $parameters['uuid'] . "-FRONT.png");
@@ -201,6 +168,22 @@ class MinecraftProfileAction extends AbstractMinecraftLinkerAction
             'imageGenerated' => true
         ]);
 
-        return $this->send();
+        return new EmptyResponse(200);
+    }
+}
+
+/** @internal */
+class PostProfileParameters extends MinecraftLinkerParameters
+{
+    public function __construct(
+        /** @var string */
+        public readonly string $name,
+        /** @var non-empty-bool */
+        public readonly bool $online,
+        /** @var non-empty-string */
+        public readonly string $url,
+        /** @var non-empty-string CLASSIC or SLIM */
+        public readonly string $type,
+    ) {
     }
 }
