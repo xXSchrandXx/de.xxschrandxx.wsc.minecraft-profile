@@ -1,14 +1,14 @@
 <?php
 
 use wcf\event\endpoint\ControllerCollecting;
-use wcf\system\endpoint\controller\xxschrandxx\minecraft\linker\GetCode;
+use wcf\system\endpoint\controller\xxschrandxx\minecraft\linker\PostProfile;
 use wcf\system\event\EventHandler;
 
 return static function (): void {
     EventHandler::getInstance()->register(
         ControllerCollecting::class,
         static function (ControllerCollecting $event) {
-            $event->register(new GetCode());
+            $event->register(new PostProfile());
         }
     );
 };
