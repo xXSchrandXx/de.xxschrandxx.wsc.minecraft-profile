@@ -1,6 +1,6 @@
 <?php
 
-namespace wcf\system\endpoint\controller\xxschrandxx\minecraft\linker;
+namespace wcf\system\endpoint\controller\xxschrandxx\minecraft\profile;
 
 use BadMethodCallException;
 use GuzzleHttp\Exception\GuzzleException;
@@ -11,14 +11,16 @@ use RuntimeException;
 use wcf\data\minecraft\MinecraftProfileEditor;
 use wcf\data\minecraft\MinecraftProfileList;
 use wcf\http\Helper;
+use wcf\system\endpoint\controller\xxschrandxx\minecraft\linker\AbstractMinecraftLinker;
+use wcf\system\endpoint\controller\xxschrandxx\minecraft\linker\MinecraftLinkerParameters;
 use wcf\system\endpoint\PostRequest;
 use wcf\system\exception\SystemException;
 use wcf\system\exception\UserInputException;
 use wcf\system\io\HttpFactory;
 use wcf\system\MCSkinPreviewAPI\SkinRendererHandler;
 
-#[PostRequest('/xxschrandxx/minecraft/{id:\d+}/{uuid:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}}/profile')]
-final class PostProfile extends AbstractMinecraftLinker
+#[PostRequest('/xxschrandxx/minecraft/{uuid:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}}/profile')]
+class PostProfile extends AbstractMinecraftLinker
 {
     /**
      * @inheritDoc
@@ -60,7 +62,7 @@ final class PostProfile extends AbstractMinecraftLinker
     /**
      * @inheritDoc
      */
-    public function execute(): ResponseInterface
+    public function execute(): void
     {
         $parameters = Helper::mapApiParameters($this->request, PostProfileParameters::class);
 
@@ -74,7 +76,7 @@ final class PostProfile extends AbstractMinecraftLinker
 
         // Set MinecraftProfile
         $minecraftProfileList = new MinecraftProfileList();
-        $minecraftProfileList->getConditionBuilder()->add('minecraftID = ? AND minecraftUUID = ?', [$this->minecraftID, $this->uuid]);
+        $minecraftProfileList->getConditionBuilder()->add('minecraftID = ? AND minecraftUUID = ?', [$this->minecraft->getObjectID(), $this->uuid]);
         $minecraftProfileList->readObjects();
 
         try {
@@ -84,7 +86,7 @@ final class PostProfile extends AbstractMinecraftLinker
         }
         if (!isset($minecraftProfile)) {
             $minecraftProfile = MinecraftProfileEditor::create([
-                'minecraftID' => $this->minecraftID,
+                'minecraftID' => $this->minecraft->getObjectID(),
                 'minecraftUUID' => $this->uuid,
                 'minecraftName' => $this->name
             ]);
@@ -168,7 +170,7 @@ final class PostProfile extends AbstractMinecraftLinker
             'imageGenerated' => true
         ]);
 
-        return new EmptyResponse(200);
+        $this->response = new EmptyResponse(200);
     }
 }
 
