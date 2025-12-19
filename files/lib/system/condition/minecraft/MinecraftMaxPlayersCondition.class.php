@@ -29,6 +29,11 @@ class MinecraftMaxPlayersCondition extends AbstractSingleFieldCondition implemen
     protected $label = 'wcf.acp.box.controller.maxPlayers';
 
     /**
+     * @inheritDoc
+     */
+    protected $description = 'wcf.acp.box.controller.maxPlayers.description';
+
+    /**
      * property value has to be greater than the given value
      * @var int
      */

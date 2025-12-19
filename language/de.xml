@@ -16,6 +16,7 @@
 		<item name="wcf.acp.box.controller.imageType.FRONT"><![CDATA[Vorderseite]]></item>
 		<item name="wcf.acp.box.controller.imageWidth"><![CDATA[Bildbreite]]></item>
 		<item name="wcf.acp.box.controller.maxPlayers"><![CDATA[Maximale Spielerzahl]]></item>
+		<item name="wcf.acp.box.controller.maxPlayers.description"><![CDATA[Dies ist nur der Anzeigewert für die maximale Anzahl an Spielern des Servers. Die maximale Anzahl an angezeigten Profilen in der Box können unter <kbd>Maximale Anzahl</kbd> eingestellt werden.]]></item>
 		<item name="wcf.acp.box.minecraft.MinecraftOnlineBox.condition.minecraftID"><![CDATA[MinecraftIDs]]></item>
 	</category>
 	<category name="wcf.acp.menu">
