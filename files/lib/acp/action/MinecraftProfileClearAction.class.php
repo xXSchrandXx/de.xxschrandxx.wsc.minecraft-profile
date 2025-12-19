@@ -57,7 +57,7 @@ class MinecraftProfileClearAction extends AbstractAction
         $minecraftProfileAction->executeAction();
 
         return new RedirectResponse(
-            LinkHandler::getInstance()->getControllerLink(MinecraftProfileListPage::class)
+            LinkHandler::getInstance()->getControllerLink(MinecraftProfileListPage::class, ['minecraftID' => $this->minecraftID])
         );
     }
 }
