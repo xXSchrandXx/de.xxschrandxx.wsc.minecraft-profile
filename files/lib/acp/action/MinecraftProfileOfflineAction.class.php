@@ -52,7 +52,7 @@ class MinecraftProfileOfflineAction extends AbstractAction
         parent::execute();
 
         $minecraftProfileList = new MinecraftProfileList();
-        if (isset($this->minecraftID) && !$this->minecraftID) {
+        if (isset($this->minecraftID) && $this->minecraftID) {
             $minecraftProfileList->getConditionBuilder()->add('minecraftID = ?', [$this->minecraftID]);
         }
         $minecraftProfileList->readObjects();
