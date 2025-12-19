@@ -2,7 +2,6 @@
 
 namespace wcf\acp\page;
 
-use InvalidArgumentException;
 use wcf\data\minecraft\Minecraft;
 use wcf\data\minecraft\MinecraftList;
 use wcf\data\minecraft\MinecraftProfileList;
