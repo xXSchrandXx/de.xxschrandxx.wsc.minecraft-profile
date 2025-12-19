@@ -3,6 +3,7 @@
 namespace wcf\acp\action;
 
 use Laminas\Diactoros\Response\RedirectResponse;
+use wcf\acp\page\MinecraftProfileListPage;
 use wcf\action\AbstractAction;
 use wcf\data\minecraft\MinecraftProfileAction;
 use wcf\data\minecraft\MinecraftProfileList;
@@ -14,11 +15,6 @@ class MinecraftProfileOfflineAction extends AbstractAction
      * @inheritDoc
      */
     public $loginRequired = true;
-
-    /**
-     * @inheritDoc
-     */
-    public $neededModules = ['minecraft_profile_enabled'];
 
     /**
      * @inheritDoc
@@ -58,12 +54,14 @@ class MinecraftProfileOfflineAction extends AbstractAction
         $minecraftProfileList->readObjects();
         $minecraftProfiles = $minecraftProfileList->getObjects();
         $minecraftProfileAction = new MinecraftProfileAction($minecraftProfiles, 'update', [
-            'online' => 0
+            'data' => [
+                'online' => 0
+            ]
         ]);
         $minecraftProfileAction->executeAction();
 
         return new RedirectResponse(
-            LinkHandler::getInstance()->getControllerLink(MinecraftProfileList::class)
+            LinkHandler::getInstance()->getControllerLink(MinecraftProfileListPage::class)
         );
     }
 }

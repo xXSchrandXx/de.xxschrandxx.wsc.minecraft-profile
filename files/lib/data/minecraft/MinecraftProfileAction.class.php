@@ -69,7 +69,11 @@ class MinecraftProfileAction extends AbstractDatabaseObjectAction implements ITo
         }
 
         foreach ($this->getObjects() as $object) {
-            $object->update(['online' => 0]);
+            if ($object->online) {
+                $object->update(['online' => 0]);
+            } else {
+                $object->update(['online' => 1]);
+            }
         }
     }
 }

@@ -3,6 +3,7 @@
 namespace wcf\acp\action;
 
 use Laminas\Diactoros\Response\RedirectResponse;
+use wcf\acp\page\MinecraftProfileListPage;
 use wcf\action\AbstractAction;
 use wcf\data\minecraft\MinecraftProfileAction;
 use wcf\data\minecraft\MinecraftProfileList;
@@ -14,11 +15,6 @@ class MinecraftProfileClearAction extends AbstractAction
      * @inheritDoc
      */
     public $loginRequired = true;
-
-    /**
-     * @inheritDoc
-     */
-    public $neededModules = ['minecraft_profile_enabled'];
 
     /**
      * @inheritDoc
@@ -61,7 +57,7 @@ class MinecraftProfileClearAction extends AbstractAction
         $minecraftProfileAction->executeAction();
 
         return new RedirectResponse(
-            LinkHandler::getInstance()->getControllerLink(MinecraftProfileList::class)
+            LinkHandler::getInstance()->getControllerLink(MinecraftProfileListPage::class)
         );
     }
 }
