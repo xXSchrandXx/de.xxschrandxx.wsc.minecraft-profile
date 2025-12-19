@@ -3,6 +3,7 @@
 namespace wcf\data\minecraft;
 
 use wcf\data\AbstractDatabaseObjectAction;
+use wcf\data\IToggleAction;
 
 /**
  * MinecraftProfile Action class
@@ -10,7 +11,7 @@ use wcf\data\AbstractDatabaseObjectAction;
  * @author   xXSchrandXx
  * @package  WoltLabSuite\Core\Data\Minecraft
  */
-class MinecraftProfileAction extends AbstractDatabaseObjectAction
+class MinecraftProfileAction extends AbstractDatabaseObjectAction implements IToggleAction
 {
     /**
      * @inheritDoc
@@ -48,5 +49,27 @@ class MinecraftProfileAction extends AbstractDatabaseObjectAction
         }
 
         return parent::delete();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function validateToggle()
+    {
+        parent::validateUpdate();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function toggle()
+    {
+        if (empty($this->objects)) {
+            $this->readObjects();
+        }
+
+        foreach ($this->getObjects() as $object) {
+            $object->update(['online' => 0]);
+        }
     }
 }

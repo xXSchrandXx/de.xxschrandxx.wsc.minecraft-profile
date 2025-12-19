@@ -83,4 +83,13 @@ class MinecraftProfile extends DatabaseObject
     {
         return $this->online;
     }
+
+    /**
+     * Weather user is offline
+     * @return ?bool
+     */
+    public function isOffline()
+    {
+        return !$this->online;
+    }
 }
