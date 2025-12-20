@@ -5,7 +5,7 @@
 >{$boxMinecraftOnlinePlayers}/{$boxMinecraftOnlineMaxPlayers}</h2>
 <div class="boxContent">
 	{hascontent}
-		<ul class="sidebarItemList" style="display: flex; gap: 10px;">
+		<ul class="sidebarItemList inlineList" style="gap: 10px;">
 			{content}
 				{foreach from=$boxMinecraftOnlineList key=boxMinecraftOnlineUUID item=boxMinecraftOnline}
 					<li>
@@ -13,9 +13,9 @@
 							<a href="{$boxMinecraftOnline['user']->getLink()}" data-object-id="{$boxMinecraftOnline['user']->userID}" class="userLink">
 						{/if}
 						{if $boxMinecraftOnline['hasGeneratedImage']}
-							<img src="{$__wcf->getPath()}/images/skins/{$boxMinecraftOnlineUUID}-{$boxMinecraftOnlineImageType}.png" title="{$boxMinecraftOnline['minecraftName']}" alt="{$boxMinecraftOnline['minecraftName']}" width="{$boxMinecraftOnlineImageWidth}"/>
+							<img src="{$__wcf->getPath()}images/skins/{$boxMinecraftOnlineUUID}-{$boxMinecraftOnlineImageType}.png" title="{$boxMinecraftOnline['minecraftName']}" alt="{$boxMinecraftOnline['minecraftName']}" width="{$boxMinecraftOnlineImageWidth}"/>
 						{else}
-							<img src="{$__wcf->getPath()}/images/skins/default-{$boxMinecraftOnlineImageType}.png" title="{$boxMinecraftOnline['minecraftName']}" alt="{$boxMinecraftOnline['minecraftName']}" width="{$boxMinecraftOnlineImageWidth}"/>
+							<img src="{$__wcf->getPath()}images/skins/default-{$boxMinecraftOnlineImageType}.png" title="{$boxMinecraftOnline['minecraftName']}" alt="{$boxMinecraftOnline['minecraftName']}" width="{$boxMinecraftOnlineImageWidth}"/>
 						{/if}
 						{if $boxMinecraftOnline['user']|isset}
 							</a>
