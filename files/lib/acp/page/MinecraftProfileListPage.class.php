@@ -25,11 +25,6 @@ class MinecraftProfileListPage extends SortablePage
     /**
      * @inheritDoc
      */
-    public $sortOrder = 'ASC';
-
-    /**
-     * @inheritDoc
-     */
     public $activeMenuItem = 'wcf.acp.menu.link.configuration.minecraft.minecraftProfileList';
 
     /**
@@ -91,6 +86,17 @@ class MinecraftProfileListPage extends SortablePage
     /**
      * @inheritDoc
      */
+    public function readData()
+    {
+        parent::readData();
+
+        $this->minecraftList = new MinecraftList();
+        $this->minecraftList->readObjects();
+    }
+
+    /**
+     * @inheritDoc
+     */
     protected function initObjectList()
     {
         parent::initObjectList();
@@ -99,17 +105,6 @@ class MinecraftProfileListPage extends SortablePage
             $this->objectList->getConditionBuilder()->add('minecraftID = ?', [$this->minecraftID]);
         }
 
-        $this->minecraftList = new MinecraftList();
-    }
-
-    /**
-     * @inheritDoc
-     */
-    protected function readObjects()
-    {
-        parent::readObjects();
-
-        $this->minecraftList->readObjects();
     }
 
     /**
