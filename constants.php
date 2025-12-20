@@ -1,0 +1,4 @@
+<?php
+
+define('MINECRAFT_PROFILE_ENABLED', true);
+define('MINECRAFT_PROFILE_IDENTITY', '');

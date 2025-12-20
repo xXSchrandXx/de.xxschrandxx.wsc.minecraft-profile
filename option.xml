@@ -17,6 +17,10 @@
 				<defaultvalue>1</defaultvalue>
 				<enableoptions>minecraft_profile_general</enableoptions>
 			</option>
+			<option name="minecraft_profile_identity">
+				<categoryname>minecraft_profile_general</categoryname>
+				<optiontype>MinecraftConnectionMultiSelect</optiontype>
+			</option>
 		</options>
 	</import>
 </data>

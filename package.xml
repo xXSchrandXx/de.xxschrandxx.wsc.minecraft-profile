@@ -7,7 +7,7 @@
 		<packagename language="de"><![CDATA[Minecraft-Profile]]></packagename>
 		<packagedescription><![CDATA[Adds a box with online minecraft players.]]></packagedescription>
 		<packagedescription language="de"><![CDATA[Fügt eine Box mit Online Minecraft-Spielern hinzu.]]></packagedescription>
-		<version>1.0.5</version>
+		<version>1.0.6</version>
 		<date>2021-11-08</date>
 	</packageinformation>
 
@@ -25,11 +25,11 @@
 		<excludedpackage version="5.0.0">de.xxschrardxx.wsc.minecraft-linker</excludedpackage>
 	</excludedpackages>
 
-	<instructions type="update" fromversion="1.0.4">
+	<instructions type="update" fromversion="1.0.5">
 		<instruction type="file"/>
 		<instruction type="language"/>
-		<instruction type="objectType"/>
 		<instruction type="template"/>
+		<instruction type="userProfileMenu"/>
 	</instructions>
 
 	<instructions type="install">
@@ -41,6 +41,7 @@
 		<instruction type="objectTypeDefinition"/>
 		<instruction type="objectType"/>
 		<instruction type="template"/>
+		<instruction type="userProfileMenu"/>
 		<instruction type="database">acp/database/install_de.xxschrandxx.wsc.minecraft-profile.php</instruction>
 	</instructions>
 </package>
