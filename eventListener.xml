@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data xmlns="https://www.woltlab.com"
+	xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://www.woltlab.com https://www.woltlab.com/XSD/5.5/eventListener.xsd">
+	<import>
+		<eventlistener name="userExportGdprMinecraftProfile">
+			<eventclassname>wcf\acp\action\UserExportGdprAction</eventclassname>
+			<eventname>export</eventname>
+			<environment>admin</environment>
+			<inherit>1</inherit>
+			<listenerclassname>wcf\system\event\listener\MinecraftProfileExportGdprActionListener</listenerclassname>
+		</eventlistener>
+	</import>
+</data>
