@@ -9,5 +9,15 @@
 			<inherit>1</inherit>
 			<listenerclassname>wcf\system\event\listener\MinecraftProfileExportGdprActionListener</listenerclassname>
 		</eventlistener>
+		<eventlistener name="avatarEditFormMinecraftProfile">
+			<eventclassname>wcf\form\AvatarEditForm</eventclassname>
+			<eventname>readData,validate,saved,assignVariables</eventname>
+			<listenerclassname>wcf\system\event\listener\MinecraftProfileAvatarEditFormListener</listenerclassname>
+		</eventlistener>
+		<eventlistener name="getAvatarMinecraftProfile">
+			<eventclassname>wcf\data\user\UserProfile</eventclassname>
+			<eventname>getAvatar</eventname>
+			<listenerclassname>wcf\system\event\listener\MinecraftProfileGetAvatarListener</listenerclassname>
+		</eventlistener>
 	</import>
 </data>

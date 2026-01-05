@@ -27,7 +27,11 @@
 
 	<instructions type="update" fromversion="1.0.6">
 		<instruction type="file"/>
+		<instruction type="database">acp/database/update_de.xxschrandxx.wsc.minecraft-profile_1.0.7.php</instruction>
 		<instruction type="eventListener"/>
+		<instruction type="templateListener"/>
+		<instruction type="userGroupOption"/>
+		<instruction type="template"/>
 	</instructions>
 
 	<instructions type="install">

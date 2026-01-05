@@ -1,12 +1,14 @@
 <?php
 
 use wcf\system\database\table\column\DefaultFalseBooleanDatabaseTableColumn;
+use wcf\system\database\table\column\IntDatabaseTableColumn;
 use wcf\system\database\table\column\NotNullInt10DatabaseTableColumn;
 use wcf\system\database\table\column\NotNullVarchar191DatabaseTableColumn;
 use wcf\system\database\table\column\ObjectIdDatabaseTableColumn;
 use wcf\system\database\table\column\VarcharDatabaseTableColumn;
 use wcf\system\database\table\DatabaseTable;
 use wcf\system\database\table\index\DatabaseTableForeignKey;
+use wcf\system\database\table\PartialDatabaseTable;
 
 return [
     DatabaseTable::create('wcf1_minecraft_profile')
@@ -27,6 +29,18 @@ return [
                 ->columns(['minecraftID'])
                 ->onDelete('CASCADE')
                 ->referencedColumns(['minecraftID'])
-                ->referencedTable('wcf1_minecraft'),
+                ->referencedTable('wcf1_minecraft')
+        ]),
+    PartialDatabaseTable::create('wcf1_user')
+        ->columns([
+            IntDatabaseTableColumn::create('minecraftProfileAvatarID')
+                ->length(10)
+        ])
+        ->foreignKeys([
+            DatabaseTableForeignKey::create()
+                ->columns(['minecraftProfileAvatarID'])
+                ->onDelete('SET NULL')
+                ->referencedColumns(['profileID'])
+                ->referencedTable('wcf1_minecraft_profile')
         ])
 ];

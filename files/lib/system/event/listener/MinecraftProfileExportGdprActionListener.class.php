@@ -8,9 +8,7 @@ use wcf\data\minecraft\MinecraftProfileList;
 use wcf\data\user\minecraft\MinecraftUserList;
 use wcf\data\user\minecraft\UserToMinecraftUserList;
 use wcf\system\WCF;
-use wcf\util\HeaderUtil;
 use wcf\util\StringUtil;
-use ZipStream\ZipStream;
 
 class MinecraftProfileExportGdprActionListener implements IParameterizedEventListener
 {
