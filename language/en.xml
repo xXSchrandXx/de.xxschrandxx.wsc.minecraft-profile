@@ -9,7 +9,7 @@
 <p>Links for plugin configuration:</p>
 <p><kbd>{link controller='MinecraftProfile' forceFrontend=true}{/link}</kbd></p>]]></item>
 		<item name="wcf.acp.option.minecraft_profile_identity"><![CDATA[Server]]></item>
-		<item name="wcf.acp.option.minecraft_profile_identity.description"><![CDATA[Activated servers are displayed in the user profile.]]></item>
+		<item name="wcf.acp.option.minecraft_profile_identity.description"><![CDATA[Activated servers are displayed on the user profile, and faces from linked Minecraft accounts can be used in the avatar selection.]]></item>
 	</category>
 	<category name="wcf.acp.box">
 		<item name="wcf.acp.box.boxController.de.xxschrandxx.wsc.minecraft-profile.MinecraftOnlineBox"><![CDATA[Minecraft Online User]]></item>
@@ -24,6 +24,9 @@
 	<category name="wcf.acp.menu">
 		<item name="wcf.acp.menu.link.configuration.minecraft.minecraftProfileList"><![CDATA[Profiles]]></item>
 	</category>
+	<category name="wcf.acp.group">
+		<item name="wcf.acp.group.option.user.profile.avatar.canUseMinecraftProfile"><![CDATA[Can use Minecraft profiles as avatars.]]></item>
+	</category>
 	<category name="wcf.acp.page">
 		<item name="wcf.acp.page.minecraftProfileList.clear"><![CDATA[Delete all entries]]></item>
 		<item name="wcf.acp.page.minecraftProfileList.offline"><![CDATA[Set all entries offline]]></item>
@@ -37,5 +40,8 @@
 		<item name="wcf.user.profile.menu.minecraftProfile"><![CDATA[Minecraft profile]]></item>
 		<item name="wcf.user.profile.menu.content.minecraftProfile.online"><![CDATA[Online]]></item>
 		<item name="wcf.user.profile.menu.content.minecraftProfile.offline"><![CDATA[Offline]]></item>
+	</category>
+	<category name="wcf.user.avatar">
+		<item name="wcf.user.avatar.type.minecraftProfile"><![CDATA[Minecraft Skin: {$name}]]></item>
 	</category>
 </language>
